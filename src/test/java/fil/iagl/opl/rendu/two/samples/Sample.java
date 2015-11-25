@@ -5,6 +5,7 @@ import java.util.Random;
 public class Sample {
 
   private int test;
+
   private String test2;
 
   private Random random;

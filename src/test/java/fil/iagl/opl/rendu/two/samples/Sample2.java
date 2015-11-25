@@ -27,16 +27,4 @@ public class Sample2 {
     return random;
   }
 
-  public int getTest() {
-    return test;
-  }
-
-  public void setTest(int test) {
-    this.test = test;
-  }
-
-  public void setRandom(Random random) {
-    this.random = random;
-  }
-
 }

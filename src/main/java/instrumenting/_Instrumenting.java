@@ -40,6 +40,7 @@ public class _Instrumenting {
       FileInputStream fin = new FileInputStream(new File(TMP_FILE_NAME));
       ObjectInputStream ois = new ObjectInputStream(fin);
       lines = (Map<String, Set<_Line>>) ois.readObject();
+      ois.close();
     } catch (Exception e) {
       throw new RuntimeException(e);
     }

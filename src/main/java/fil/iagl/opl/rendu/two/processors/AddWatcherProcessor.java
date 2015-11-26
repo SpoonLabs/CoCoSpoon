@@ -4,33 +4,56 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
+import java.util.Arrays;
+import java.util.List;
 import java.util.function.Predicate;
 
 import org.apache.commons.lang3.StringEscapeUtils;
 
+import fil.iagl.opl.rendu.two.insert.Insertion;
+import fil.iagl.opl.rendu.two.insert.impl.BasicInsert;
+import fil.iagl.opl.rendu.two.insert.impl.BreakOrReturnInsert;
+import fil.iagl.opl.rendu.two.insert.impl.CaseInsert;
+import fil.iagl.opl.rendu.two.insert.impl.CatchInsert;
+import fil.iagl.opl.rendu.two.insert.impl.ConstructorInsert;
+import fil.iagl.opl.rendu.two.insert.impl.DoNotInsert;
+import fil.iagl.opl.rendu.two.insert.impl.IfInsert;
+import fil.iagl.opl.rendu.two.insert.impl.MethodInsert;
+import fil.iagl.opl.rendu.two.insert.impl.SwitchInsert;
+import fil.iagl.opl.rendu.two.insert.impl.TryInsert;
 import instrumenting._Instrumenting;
 import spoon.processing.AbstractProcessor;
 import spoon.reflect.code.CtBlock;
 import spoon.reflect.code.CtCodeSnippetStatement;
-import spoon.reflect.code.CtReturn;
-import spoon.reflect.code.CtStatement;
+import spoon.reflect.code.CtIf;
+import spoon.reflect.code.CtInvocation;
+import spoon.reflect.code.CtLiteral;
+import spoon.reflect.code.CtSwitch;
+import spoon.reflect.code.CtTypeAccess;
+import spoon.reflect.code.CtUnaryOperator;
 import spoon.reflect.declaration.CtClass;
+import spoon.reflect.declaration.CtElement;
 import spoon.reflect.visitor.filter.TypeFilter;
 
 public class AddWatcherProcessor extends AbstractProcessor<CtClass> {
 
-  private static final Predicate<CtStatement> needToBeInstrumented = (candidate) -> !(candidate instanceof CtClass) && !(candidate instanceof CtBlock) && !candidate.isImplicit();
+  private static final Predicate<CtElement> needToBeInstrumented = (candidate) -> !(candidate instanceof CtUnaryOperator)
+    && !(candidate instanceof CtClass)
+    && !(candidate.getParent() instanceof CtIf)
+    && !((candidate instanceof CtInvocation && candidate.getParent() instanceof CtSwitch))
+    && !(candidate instanceof CtBlock) && !candidate.isImplicit()
+    && !(candidate instanceof CtLiteral)
+    && !(candidate instanceof CtCodeSnippetStatement)
+    && !(candidate instanceof CtTypeAccess);
 
-  /*
-   * TODO: Handle one line code
-   */
-
-  // private CtClass instrumentingClass;
+  private static final List<Insertion> filters = Arrays.asList(new ConstructorInsert(), new MethodInsert(), new TryInsert(), new CatchInsert(), new IfInsert(), new SwitchInsert(),
+    new CaseInsert(),
+    new BreakOrReturnInsert(),
+    new BasicInsert());
 
   @Override
   public boolean isToBeProcessed(CtClass candidate) {
-    boolean innerPackage = candidate.getPackage().getQualifiedName().startsWith("instrumenting");
-    return !innerPackage;
+    return !candidate.isAnonymous() && !candidate.getPackage().getQualifiedName().startsWith("instrumenting");
   }
 
   @Override
@@ -42,6 +65,7 @@ public class AddWatcherProcessor extends AbstractProcessor<CtClass> {
       FileOutputStream fout = new FileOutputStream(tmpFile);
       ObjectOutputStream oos = new ObjectOutputStream(fout);
       oos.writeObject(_Instrumenting.lines);
+      oos.close();
 
       instrumentClass.getField("TMP_FILE_NAME")
         .setDefaultExpression(getFactory().Code().createCodeSnippetExpression("\"" + StringEscapeUtils.escapeJava(tmpFile.getAbsolutePath()) + "\""));
@@ -53,75 +77,24 @@ public class AddWatcherProcessor extends AbstractProcessor<CtClass> {
 
   @Override
   public void process(CtClass ctClass) {
-    ctClass.getElements(new TypeFilter<>(CtStatement.class)).stream().filter(needToBeInstrumented).forEach(statement -> instrumentLine(statement));
+    ctClass.getElements(new TypeFilter<>(CtElement.class)).stream().filter(needToBeInstrumented).forEach(statement -> findMatcherAndApply(statement));
 
     System.out.println(ctClass.getQualifiedName() + "-----------------\n" + _Instrumenting.lines.get(ctClass.getQualifiedName()));
   }
 
-  private void instrumentLine(CtStatement statement) {
-    String qualifiedName = statement.getParent(CtClass.class).getQualifiedName();
-    if (!(statement instanceof CtReturn) && statement.getParent(CtReturn.class) == null) {
-      _Instrumenting.addInstrumentedClass(qualifiedName);
-      _Instrumenting.addInstrumentedStatement(qualifiedName, statement.getPosition().getLine());
-
-      CtCodeSnippetStatement statementToInsert = getFactory().Code()
-        .createCodeSnippetStatement("instrumenting._Instrumenting.isPassedThrough(\"" + qualifiedName + "\",new instrumenting._Line(" + statement.getPosition().getLine() + "))");
-      statement
-        .insertAfter(statementToInsert);
-    } else {
-      // return case
-      // TODO: Find all call inside code and add instrumentation at next line
-    }
-
+  private void findMatcherAndApply(CtElement element) {
+    instrumentLine(filters.stream().filter(filter -> filter.match(element)).findFirst().orElse(new DoNotInsert()), element);
   }
 
-  // @Override
-  // public void init() {
-  // instrumentingClass = getFactory().Class().create(getFactory().Package().getOrCreate("iagl.opl.generated"),
-  // "_Instrumenting");
-  //
-  // CtTypeReference mapType = getFactory().Core().createTypeReference().setSimpleName("java.util.Map");
-  // CtTypeReference stringType = (CtTypeReference<?>) getFactory().Core().createTypeReference().setSimpleName("java.lang.String");
-  // CtTypeReference setType = (CtTypeReference<?>) getFactory().Core().createTypeReference().setSimpleName("java.util.Set");
-  //
-  // mapType.addActualTypeArgument(stringType);
-  // mapType.addActualTypeArgument(setType);
-  //
-  // CtField lines = getFactory().Core().createField();
-  // lines.addModifier(ModifierKind.PRIVATE);
-  // lines.setSimpleName("lines");
-  // lines.setType(mapType);
-  // instrumentingClass.addField(lines);
-  //
-  // CtClass lineClass = getFactory().Class().create(getFactory().Package().getOrCreate("iagl.opl.generated"),
-  // "_Line");
-  //
-  // CtField position = getFactory().Core().createField();
-  // position.addModifier(ModifierKind.PRIVATE);
-  // position.setSimpleName("position");
-  // position.setType(getFactory().Type().INTEGER);
-  // lineClass.addField(position);
-  //
-  // CtField executed = getFactory().Core().createField();
-  // executed.addModifier(ModifierKind.PRIVATE);
-  // executed.setSimpleName("executed");
-  // executed.setType(getFactory().Type().BOOLEAN);
-  // lineClass.addField(executed);
-  //
-  // CtParameter<Integer> param = getFactory().Core().createParameter();
-  // param.setSimpleName("position");
-  // param.setType(getFactory().Type().INTEGER);
-  //
-  // CtConstructor constructor = getFactory().Core().createConstructor();
-  // constructor.addModifier(ModifierKind.PUBLIC);
-  // constructor.addParameter(param);
-  // constructor.setBody(getFactory().Code()
-  // .createCtBlock(getFactory().Code().createCodeSnippetStatement("this.position = position")));
-  // lineClass.addConstructor(constructor);
-  //
-  // instrumentingClass.addNestedType(lineClass);
-  //
-  // System.out.println(instrumentingClass);
-  // }
+  private void instrumentLine(Insertion filter, CtElement element) {
+    String qualifiedName = element.getParent(CtClass.class).getQualifiedName();
+    _Instrumenting.addInstrumentedClass(qualifiedName);
+    _Instrumenting.addInstrumentedStatement(qualifiedName, element.getPosition().getLine());
+    CtCodeSnippetStatement statementToInsert = getFactory().Code()
+      .createCodeSnippetStatement("instrumenting._Instrumenting.isPassedThrough(\"" + qualifiedName + "\",new instrumenting._Line(" + element.getPosition().getLine() + "))");
+
+    filter.apply(element, statementToInsert);
+
+  }
 
 }

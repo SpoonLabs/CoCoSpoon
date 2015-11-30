@@ -28,7 +28,14 @@ public class _Instrumenting {
     if (lines.isEmpty()) {
       init();
     }
-    _Line insideMap = lines.get(qualifiedName).parallelStream().filter(line -> line.getPosition() == _line.getPosition()).findFirst().orElse(null);
+
+    _Line insideMap = null;
+    for (_Line tmp : _Instrumenting.lines.get(qualifiedName)) {
+      if (tmp.getPosition() == _line.getPosition()) {
+        insideMap = tmp;
+      }
+    }
+
     if (insideMap != null && !insideMap.isExecuted()) {
       insideMap.setExecuted(true);
       System.out.println(qualifiedName + ":" + insideMap.getPosition() + " has been executed!");

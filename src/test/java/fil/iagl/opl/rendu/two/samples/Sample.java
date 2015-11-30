@@ -45,4 +45,20 @@ public class Sample {
     this.random = random;
   }
 
+  private class MyPrivateClass {
+
+    public MyPrivateClass() {
+      super();
+    }
+
+    private class MySecondPrivateClass {
+
+      public MySecondPrivateClass() {
+        super();
+      }
+
+    }
+
+  }
+
 }

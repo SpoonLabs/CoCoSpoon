@@ -6,8 +6,6 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
 import java.util.function.Predicate;
 
 import org.apache.commons.lang3.StringEscapeUtils;
@@ -94,12 +92,12 @@ public class AddWatcherProcessor extends AbstractProcessor<CtClass<?>> {
     }
 
     // Diplay MAP
-    for (Entry<String, Map<Integer, Boolean>> entry : _Instrumenting.lines.entrySet()) {
-      System.out.println(entry.getKey() + " -> ");
-      for (Integer line : entry.getValue().keySet()) {
-        System.out.println("\t" + line);
-      }
-    }
+    // for (Entry<String, Map<Integer, Boolean>> entry : _Instrumenting.lines.entrySet()) {
+    // System.out.println(entry.getKey() + " -> ");
+    // for (Integer line : entry.getValue().keySet()) {
+    // System.out.println("\t" + line);
+    // }
+    // }
   }
 
   @Override

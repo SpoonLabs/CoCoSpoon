@@ -8,13 +8,17 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
-import java.util.TreeMap;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class _Instrumenting {
 
+  private static final char TEXTUAL_ARRAY_CHAR = '#';
+  private static final char TEXTUAL_ARRAY_SIZE = 20;
+
   public static String TMP_FILE_NAME;
 
-  public static Map<String, Map<Integer, Boolean>> lines = new TreeMap<String, Map<Integer, Boolean>>();
+  public static Map<String, Map<Integer, Boolean>> lines = new HashMap<String, Map<Integer, Boolean>>();
 
   public static void addInstrumentedClass(String qualifiedName) {
     if (lines.get(qualifiedName) == null) {
@@ -34,6 +38,7 @@ public class _Instrumenting {
     lines.get(qualifiedName).put(position, true);
   }
 
+  @SuppressWarnings("unchecked")
   private static void init() {
     try {
       FileInputStream fin = new FileInputStream(new File(TMP_FILE_NAME));
@@ -46,6 +51,17 @@ public class _Instrumenting {
           _Instrumenting.displayResultPerPackageInConsole(null);
         }
       }, "Shutdown-thread"));
+
+      // DO NOT USE
+      new Timer().schedule(new TimerTask() {
+
+        @Override
+        public void run() {
+          for (int i = 0; i < 25; i++)
+            System.out.println("");
+          _Instrumenting.displayResultPerPackageInConsole(null);
+        }
+      }, 0, 250);
     } catch (Exception e) {
       throw new RuntimeException(e);
     }
@@ -75,7 +91,12 @@ public class _Instrumenting {
     }
 
     Float covergeRatio = nbLineExecuted / nbLineTotal;
-    System.out.printf("%s -> %.2f%%\n", commonPackage, covergeRatio);
+    // System.out.printf("%s -> %.2f%%\n", commonPackage, covergeRatio);
+    String arrayTab = "";
+    int nbArrayChar = (int) (TEXTUAL_ARRAY_SIZE * covergeRatio);
+    for (int i = 0; i < nbArrayChar; i++)
+      arrayTab += TEXTUAL_ARRAY_CHAR;
+    System.out.format("%-40s[%-20s] %.2f%%%n", commonPackage, arrayTab, covergeRatio * 100);
 
     Set<String> subDirectPackage = new HashSet<String>();
     for (Entry<String, Map<Integer, Boolean>> entry : lines.entrySet()) {
@@ -121,4 +142,5 @@ public class _Instrumenting {
     }
     return strings[0];
   }
+
 }

@@ -14,7 +14,7 @@ public class CaseInsert implements Insertion {
 
   @Override
   public void apply(CtElement element, CtStatement statementToInsert) {
-    CtCase ctCase = (CtCase) element;
+    CtCase<?> ctCase = (CtCase<?>) element;
     statementToInsert.setParent(ctCase);
     ctCase.getStatements().add(0, statementToInsert);
   }

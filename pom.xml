@@ -18,9 +18,9 @@
 
 	<dependencies>
 		<dependency>
-		<groupId>fr.inria.gforge.spoon</groupId>
-		<artifactId>spoon-core</artifactId>
-		<version>4.4.0</version>
+			<groupId>fr.inria.gforge.spoon</groupId>
+			<artifactId>spoon-core</artifactId>
+			<version>4.4.0</version>
 		</dependency>
 
 		<dependency>
@@ -35,6 +35,7 @@
 			<version>3.8.1</version>
 			<scope>test</scope>
 		</dependency>
+
 	</dependencies>
 
 

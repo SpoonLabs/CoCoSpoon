@@ -6,8 +6,8 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 import java.util.Map.Entry;
-import java.util.Set;
 import java.util.function.Predicate;
 
 import org.apache.commons.lang3.StringEscapeUtils;
@@ -25,11 +25,13 @@ import fil.iagl.opl.rendu.two.insert.impl.MethodInsert;
 import fil.iagl.opl.rendu.two.insert.impl.SwitchInsert;
 import fil.iagl.opl.rendu.two.insert.impl.SynchronizedInsert;
 import fil.iagl.opl.rendu.two.insert.impl.TryInsert;
+import fil.iagl.opl.rendu.two.tools.ContainsSameElementFilter;
 import instrumenting._Instrumenting;
-import instrumenting._Line;
 import spoon.processing.AbstractProcessor;
 import spoon.reflect.code.CtBlock;
 import spoon.reflect.code.CtCodeSnippetStatement;
+import spoon.reflect.code.CtDo;
+import spoon.reflect.code.CtFor;
 import spoon.reflect.code.CtIf;
 import spoon.reflect.code.CtInvocation;
 import spoon.reflect.code.CtLambda;
@@ -37,21 +39,24 @@ import spoon.reflect.code.CtLiteral;
 import spoon.reflect.code.CtSwitch;
 import spoon.reflect.code.CtTypeAccess;
 import spoon.reflect.code.CtUnaryOperator;
+import spoon.reflect.code.CtWhile;
 import spoon.reflect.declaration.CtClass;
 import spoon.reflect.declaration.CtElement;
+import spoon.reflect.declaration.CtField;
 import spoon.reflect.visitor.filter.TypeFilter;
 
 public class AddWatcherProcessor extends AbstractProcessor<CtClass<?>> {
 
   private static final Predicate<CtElement> needToBeInstrumented = (candidate) -> !(candidate instanceof CtUnaryOperator)
     && !(candidate instanceof CtClass)
-    && !(candidate.getParent() instanceof CtIf)
     && !((candidate instanceof CtInvocation && candidate.getParent() instanceof CtSwitch))
     && !(candidate instanceof CtBlock) && !candidate.isImplicit()
     && !(candidate instanceof CtLiteral)
     && !(candidate instanceof CtCodeSnippetStatement)
     && !(candidate instanceof CtTypeAccess)
-    && !(candidate.getParent() instanceof CtLambda);
+    && !(candidate instanceof CtField)
+    && !(candidate.getParent() instanceof CtLambda)
+    && !isInsideIfForSwitchDoWhile(candidate);
 
   private static final List<Insertion> filters = Arrays.asList(
     new ConstructorInsert(),
@@ -89,9 +94,9 @@ public class AddWatcherProcessor extends AbstractProcessor<CtClass<?>> {
     }
 
     // Diplay MAP
-    for (Entry<String, Set<_Line>> entry : _Instrumenting.lines.entrySet()) {
+    for (Entry<String, Map<Integer, Boolean>> entry : _Instrumenting.lines.entrySet()) {
       System.out.println(entry.getKey() + " -> ");
-      for (_Line line : entry.getValue()) {
+      for (Integer line : entry.getValue().keySet()) {
         System.out.println("\t" + line);
       }
     }
@@ -111,12 +116,53 @@ public class AddWatcherProcessor extends AbstractProcessor<CtClass<?>> {
     if (qualifiedName.contains("$")) {
       qualifiedName = qualifiedName.substring(0, qualifiedName.indexOf("$"));
     }
+
     _Instrumenting.addInstrumentedClass(qualifiedName);
     _Instrumenting.addInstrumentedStatement(qualifiedName, element.getPosition().getLine());
     CtCodeSnippetStatement statementToInsert = getFactory().Code()
-      .createCodeSnippetStatement("instrumenting._Instrumenting.isPassedThrough(\"" + qualifiedName + "\",new instrumenting._Line(" + element.getPosition().getLine() + "))");
-
+      .createCodeSnippetStatement(
+        "instrumenting._Instrumenting.isPassedThrough(\"" + qualifiedName + "\", " + element.getPosition().getLine() + ")");
     filter.apply(element, statementToInsert);
+  }
+
+  private static boolean isInsideIfForSwitchDoWhile(CtElement candidate) {
+    boolean isInsideIfExpression = false;
+    boolean isInsideForExpression = false;
+    boolean isInsideForInit = false;
+    boolean isInsideForUpdate = false;
+    boolean isInsideSwitchInit = false;
+    boolean isInsideDoExpression = false;
+    boolean isInsideWhileExpression = false;
+    if (candidate.getParent(CtIf.class) != null) {
+      CtIf ctIf = candidate.getParent(CtIf.class);
+      isInsideIfExpression = !ctIf.getCondition().getElements(new ContainsSameElementFilter(candidate)).isEmpty();
+    }
+
+    if (candidate.getParent(CtFor.class) != null) {
+      CtFor ctFor = candidate.getParent(CtFor.class);
+      isInsideForExpression = !(ctFor.getExpression() == null) && !ctFor.getExpression().getElements(new ContainsSameElementFilter(candidate)).isEmpty();
+      isInsideForInit = !(ctFor.getForInit() == null)
+        && ctFor.getForInit().stream().anyMatch(statement -> !statement.getElements(new ContainsSameElementFilter(candidate)).isEmpty());
+      isInsideForUpdate = !(ctFor.getForUpdate() == null)
+        && ctFor.getForUpdate().stream().anyMatch(statement -> !statement.getElements(new ContainsSameElementFilter(candidate)).isEmpty());
+    }
+
+    if (candidate.getParent(CtSwitch.class) != null) {
+      CtSwitch<?> ctSwitch = candidate.getParent(CtSwitch.class);
+      isInsideSwitchInit = !ctSwitch.getSelector().getElements(new ContainsSameElementFilter(candidate)).isEmpty();
+    }
+
+    if (candidate.getParent(CtDo.class) != null) {
+      CtDo ctDo = candidate.getParent(CtDo.class);
+      isInsideDoExpression = !ctDo.getLoopingExpression().getElements(new ContainsSameElementFilter(candidate)).isEmpty();
+    }
+
+    if (candidate.getParent(CtWhile.class) != null) {
+      CtWhile ctWhile = candidate.getParent(CtWhile.class);
+      isInsideDoExpression = !ctWhile.getLoopingExpression().getElements(new ContainsSameElementFilter(candidate)).isEmpty();
+    }
+
+    return isInsideIfExpression || isInsideDoExpression || isInsideForExpression || isInsideForInit || isInsideForUpdate || isInsideSwitchInit || isInsideWhileExpression;
   }
 
 }

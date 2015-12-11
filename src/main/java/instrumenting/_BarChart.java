@@ -58,11 +58,10 @@ import javafx.stage.Stage;
 
  */
 
-public class test2 extends Application {
+public class _BarChart extends Application {
 
   private ObservableList<BarChart.Series<String, Number>> barChartData;
   private ArrayList<String> classes;
-  Map<String, Map<Integer, Boolean>> classMap = new HashMap<String, Map<Integer, Boolean>>();
   List<String> currentList;
   List<BarChart.Data> dataList;
   BarChart chart;
@@ -72,43 +71,13 @@ public class test2 extends Application {
   private void init(Stage primaryStage) {
     currentList = new ArrayList<>();
 
-    Map tmp1 = new HashMap<Integer, Boolean>();
-    tmp1.put(1, true);
-    tmp1.put(2, false);
-    tmp1.put(3, false);
-    tmp1.put(4, false);
-
-    Map tmp2 = new HashMap<Integer, Boolean>();
-    tmp2.put(1, false);
-    tmp2.put(2, true);
-    tmp2.put(3, true);
-    tmp2.put(4, true);
-
-    Map tmp3 = new HashMap<Integer, Boolean>();
-    tmp3.put(1, true);
-    tmp3.put(2, false);
-    tmp3.put(3, false);
-    tmp3.put(4, false);
-
-    Map tmp4 = new HashMap<Integer, Boolean>();
-    tmp4.put(1, true);
-    tmp4.put(2, false);
-    tmp4.put(3, false);
-    tmp4.put(4, false);
-
-    classMap.put("org.fr.fil.iagl.pack1.yolo1.class1", tmp1);
-    classMap.put("org.fr.fil.iagl.pack1.yolo2.class1", tmp3);
-    classMap.put("org.fr.fil.iagl.pack1.class2", tmp2);
-
-    classMap.put("org.fr.fil.iagl.pack1.autrePack.class3", tmp3);
-    classMap.put("org.fr.fil.iagl.class4", tmp4);
-
     Group root = new Group();
     primaryStage.setScene(new Scene(root));
+    primaryStage.setFullScreen(true);
 
     // Init de la classe la plus haute dans la hierarchie
     classes = new ArrayList<String>();
-    String tmp = getLongestCommonPrefix(classMap.keySet().toArray(new String[classMap.keySet().size()]));
+    String tmp = getLongestCommonPrefix(_Instrumenting.lines.keySet().toArray(new String[_Instrumenting.lines.keySet().size()]));
     if (tmp.charAt(tmp.length() - 1) == '.') {
       tmp = tmp.substring(0, tmp.length() - 1);
     }
@@ -124,7 +93,7 @@ public class test2 extends Application {
 
     dataList = new ArrayList<>();
 
-    BarChart.Data data = new BarChart.Data(classes.get(0), 25);
+    BarChart.Data data = new BarChart.Data(classes.get(0), 0);
 
     dataList.add(data);
 
@@ -139,13 +108,13 @@ public class test2 extends Application {
     chart = new BarChart(xAxis, yAxis, barChartData, 25.0d);
     chart.getXAxis().setAutoRanging(true);
     chart.setAnimated(true);
-    chart.getYAxis().setAutoRanging(true);
+    // chart.getYAxis().setAutoRanging(true);
     root.getChildren().add(chart);
     Button bouton = new Button("Retour");
     root.getChildren().add(bouton);
 
-    for (String map : classMap.keySet()) {
-      ObservableMap<Integer, Boolean> observedMap = FXCollections.observableMap(classMap.get(map));
+    for (String map : _Instrumenting.lines.keySet()) {
+      ObservableMap<Integer, Boolean> observedMap = FXCollections.observableMap(_Instrumenting.lines.get(map));
       observedMap.addListener(new MapChangeListener<Integer, Boolean>() {
 
         public void onChanged(javafx.collections.MapChangeListener.Change<? extends Integer, ? extends Boolean> changed) {
@@ -164,10 +133,11 @@ public class test2 extends Application {
         }
 
       });
-      classMap.put(map, observedMap);
+      _Instrumenting.lines.put(map, observedMap);
     }
 
     chart.setOnMouseClicked(new EventHandler<Event>() {
+
       @Override
       public void handle(Event event) {
 
@@ -216,26 +186,7 @@ public class test2 extends Application {
     });
     // observedMap.remove("org.fr.fil.iagl.class4");
     // observedMap.put("org.fr.fil.iagl.class4", tmp3);
-    // classMap.get("org.fr.fil.iagl.class4").remove(1);
-    Thread thread = new Thread() {
-
-      public void run() {
-        while (true) {
-          if (classMap.get("org.fr.fil.iagl.class4").get(1) == true) {
-            classMap.get("org.fr.fil.iagl.class4").put(1, false);
-          } else {
-            classMap.get("org.fr.fil.iagl.class4").put(1, true);
-          }
-          // System.out.println(classMap);
-          try {
-            Thread.sleep(500); // 1 second
-          } catch (Exception e) {
-            e.printStackTrace();
-          }
-        }
-      }
-    };
-    thread.start();
+    // _Instrumenting.lines.get("org.fr.fil.iagl.class4").remove(1);
   }
 
   private void refresh(Map<String, Integer> changeTo) {
@@ -244,7 +195,7 @@ public class test2 extends Application {
     classes.clear();
     // currentList.clear();
     // observedMap.clear();
-    // classMap.clear();
+    // _Instrumenting.lines.clear();
     barChartData.get(0).getData().clear();
     for (String s : changeTo.keySet()) {
       classes.add(s);
@@ -268,7 +219,7 @@ public class test2 extends Application {
   public Integer display(String className) {
     Float nbLineExecuted = 0f;
     Float nbLineTotal = 0f;
-    for (Entry<String, Map<Integer, Boolean>> entry : classMap.entrySet()) {
+    for (Entry<String, Map<Integer, Boolean>> entry : _Instrumenting.lines.entrySet()) {
       if (entry.getKey().startsWith(className)) {
         for (boolean isExecuted : entry.getValue().values()) {
           if (isExecuted) {
@@ -284,7 +235,7 @@ public class test2 extends Application {
   }
 
   public Integer displayForCLass(String className) {
-    Map<Integer, Boolean> map = classMap.get(className);
+    Map<Integer, Boolean> map = _Instrumenting.lines.get(className);
     Integer total = 0;
     Integer exec = 0;
     for (Integer i : map.keySet()) {
@@ -301,7 +252,7 @@ public class test2 extends Application {
   public Map<String, Integer> getPackageResult(String packageName) {
     String commonPackage;
     if (packageName == null) {
-      commonPackage = getLongestCommonPrefix(classMap.keySet().toArray(new String[classMap.keySet().size()]));
+      commonPackage = getLongestCommonPrefix(_Instrumenting.lines.keySet().toArray(new String[_Instrumenting.lines.keySet().size()]));
       commonPackage = commonPackage.substring(0, commonPackage.length() - 1);
     } else {
       commonPackage = packageName;
@@ -309,7 +260,7 @@ public class test2 extends Application {
 
     // Float nbLineExecuted = 0f;
     // Float nbLineTotal = 0f;
-    // for (Entry<String, Map<Integer, Boolean>> entry : classMap.entrySet()) {
+    // for (Entry<String, Map<Integer, Boolean>> entry : _Instrumenting.lines.entrySet()) {
     // if (entry.getKey().startsWith(commonPackage)) {
     // for (boolean isExecuted : entry.getValue().values()) {
     // if (isExecuted) {
@@ -326,7 +277,7 @@ public class test2 extends Application {
 
     // Calculer couverture du package
     Set<String> subDirectPackage = new HashSet<String>();
-    for (Entry<String, Map<Integer, Boolean>> entry : classMap.entrySet()) {
+    for (Entry<String, Map<Integer, Boolean>> entry : _Instrumenting.lines.entrySet()) {
       if (entry.getKey().substring(0, entry.getKey().lastIndexOf(".")).contains(commonPackage)
         && entry.getKey().substring(0, entry.getKey().lastIndexOf(".")).split("\\.").length > commonPackage.split("\\.").length) {
         subDirectPackage.add(String.format("%s.%s", commonPackage, entry.getKey().split("\\.")[commonPackage.split("\\.").length]));
@@ -338,7 +289,7 @@ public class test2 extends Application {
     for (String s : subDirectPackage) {
       Float nbLineExecuted = 0f;
       Float nbLineTotal = 0f;
-      for (Entry<String, Map<Integer, Boolean>> entry : classMap.entrySet()) {
+      for (Entry<String, Map<Integer, Boolean>> entry : _Instrumenting.lines.entrySet()) {
         if (entry.getKey().startsWith(commonPackage)) {
           for (boolean isExecuted : entry.getValue().values()) {
             if (isExecuted) {
@@ -380,8 +331,8 @@ public class test2 extends Application {
     return strings[0];
   }
 
-  public static void main(String[] args) {
-    launch(args);
+  public static void run() {
+    launch();
   }
 
 }

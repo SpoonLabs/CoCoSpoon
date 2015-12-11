@@ -14,8 +14,8 @@ public class App {
   private static final String INSTRUMENT_SOURCE_FOLDER = "src/main/java/instrumenting";
 
   public static void main(String[] args) throws Exception {
-    String inputDirectory = "C:\\Users\\RMS\\Documents\\workspace-sts-3.7.0.RELEASE\\OPL_Sample\\commons-math";
-    String outputDirectory = "C:\\Users\\RMS\\Documents\\workspace-sts-3.7.0.RELEASE\\OPL_Sample\\commons-math_instrumented";
+    String inputDirectory = "C:\\Users\\RMS\\Documents\\workspace-sts-3.7.0.RELEASE\\OPL_Sample\\commons-lang";
+    String outputDirectory = "C:\\Users\\RMS\\Documents\\workspace-sts-3.7.0.RELEASE\\OPL_Sample\\commons-lang_instrumented";
 
     File inputFile = new File(inputDirectory);
     File outputFile = new File(outputDirectory);

@@ -118,10 +118,6 @@ public class _BarChart extends Application {
       observedMap.addListener(new MapChangeListener<Integer, Boolean>() {
 
         public void onChanged(javafx.collections.MapChangeListener.Change<? extends Integer, ? extends Boolean> changed) {
-          System.out.println(changed);
-          System.out.println(currentList);
-          System.out.println(barChartData.get(0).getData());
-
           for (String s : currentList) {
             for (Data<String, Number> data : barChartData.get(0).getData()) {
               if (s.contains(data.getXValue())) {
@@ -145,7 +141,6 @@ public class _BarChart extends Application {
         for (Series<String, Number> serie : barChartData) {
           for (XYChart.Data<String, Number> item : serie.getData()) {
             item.getNode().setOnMousePressed((Event event2) -> {
-              System.out.println("you clicked " + item.getXValue());
               retMap = new HashMap<String, Integer>();
               current = item.getXValue();
               Map<String, Integer> changeTo = getPackageResult(item.getXValue());
@@ -190,7 +185,6 @@ public class _BarChart extends Application {
   }
 
   private void refresh(Map<String, Integer> changeTo) {
-    System.out.println(changeTo);
     dataList.clear();
     classes.clear();
     // currentList.clear();

@@ -17,7 +17,6 @@ public class SwitchInsert implements Insertion {
   @Override
   public void apply(CtElement element, CtStatement statementToInsert) {
     CtSwitch<CtCase<?>> ctSwitch = (CtSwitch) element;
-
     CtBlock<?> ctBlock = element.getParent(CtBlock.class);
     int idx = -1;
     for (int i = 0; i < ctBlock.getStatements().size(); i++) {

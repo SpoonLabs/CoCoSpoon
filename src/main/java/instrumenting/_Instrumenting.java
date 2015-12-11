@@ -8,8 +8,6 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
-import java.util.Timer;
-import java.util.TimerTask;
 
 public class _Instrumenting {
 
@@ -22,6 +20,7 @@ public class _Instrumenting {
 
   public static void addInstrumentedClass(String qualifiedName) {
     if (lines.get(qualifiedName) == null) {
+      System.out.printf("Intrumenting %s ...\n", qualifiedName);
       lines.put(qualifiedName, new HashMap<Integer, Boolean>());
     }
   }
@@ -46,24 +45,33 @@ public class _Instrumenting {
       lines = (Map<String, Map<Integer, Boolean>>) ois.readObject();
       ois.close();
 
+      System.out.println("Creating barchart");
+      new Thread(new Runnable() {
+
+        @Override
+        public void run() {
+          _BarChart.run();
+        }
+      }).start();
+
       Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
         public void run() {
-          for (int i = 0; i < 25; i++)
-            System.out.println("");
-          _Instrumenting.displayResultPerPackageInConsole(null);
+          while (true) {
+          }
         }
       }, "Shutdown-thread"));
 
       // DO NOT USE
-      new Timer().schedule(new TimerTask() {
+      // new Timer().schedule(new TimerTask() {
+      //
+      // @Override
+      // public void run() {
+      // for (int i = 0; i < 25; i++)
+      // System.out.println("");
+      // _Instrumenting.displayResultPerPackageInConsole(null);
+      // }
+      // }, 0, 250);
 
-        @Override
-        public void run() {
-          for (int i = 0; i < 25; i++)
-            System.out.println("");
-          _Instrumenting.displayResultPerPackageInConsole(null);
-        }
-      }, 0, 250);
     } catch (Exception e) {
       throw new RuntimeException(e);
     }

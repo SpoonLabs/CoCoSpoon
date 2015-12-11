@@ -6,8 +6,6 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
 import java.util.function.Predicate;
 
 import org.apache.commons.lang3.StringEscapeUtils;
@@ -18,6 +16,7 @@ import fil.iagl.opl.rendu.two.insert.impl.BeforeInsert;
 import fil.iagl.opl.rendu.two.insert.impl.CaseInsert;
 import fil.iagl.opl.rendu.two.insert.impl.CatchInsert;
 import fil.iagl.opl.rendu.two.insert.impl.ConstructorInsert;
+import fil.iagl.opl.rendu.two.insert.impl.DoInsert;
 import fil.iagl.opl.rendu.two.insert.impl.DoNotInsert;
 import fil.iagl.opl.rendu.two.insert.impl.ForInsert;
 import fil.iagl.opl.rendu.two.insert.impl.IfInsert;
@@ -25,6 +24,7 @@ import fil.iagl.opl.rendu.two.insert.impl.MethodInsert;
 import fil.iagl.opl.rendu.two.insert.impl.SwitchInsert;
 import fil.iagl.opl.rendu.two.insert.impl.SynchronizedInsert;
 import fil.iagl.opl.rendu.two.insert.impl.TryInsert;
+import fil.iagl.opl.rendu.two.insert.impl.WhileInsert;
 import fil.iagl.opl.rendu.two.tools.ContainsSameElementFilter;
 import instrumenting._Instrumenting;
 import spoon.processing.AbstractProcessor;
@@ -33,7 +33,6 @@ import spoon.reflect.code.CtCodeSnippetStatement;
 import spoon.reflect.code.CtDo;
 import spoon.reflect.code.CtFor;
 import spoon.reflect.code.CtIf;
-import spoon.reflect.code.CtInvocation;
 import spoon.reflect.code.CtLambda;
 import spoon.reflect.code.CtLiteral;
 import spoon.reflect.code.CtSwitch;
@@ -49,7 +48,6 @@ public class AddWatcherProcessor extends AbstractProcessor<CtClass<?>> {
 
   private static final Predicate<CtElement> needToBeInstrumented = (candidate) -> !(candidate instanceof CtUnaryOperator)
     && !(candidate instanceof CtClass)
-    && !((candidate instanceof CtInvocation && candidate.getParent() instanceof CtSwitch))
     && !(candidate instanceof CtBlock) && !candidate.isImplicit()
     && !(candidate instanceof CtLiteral)
     && !(candidate instanceof CtCodeSnippetStatement)
@@ -64,6 +62,8 @@ public class AddWatcherProcessor extends AbstractProcessor<CtClass<?>> {
     new TryInsert(),
     new CatchInsert(),
     new ForInsert(),
+    new WhileInsert(),
+    new DoInsert(),
     new SynchronizedInsert(),
     new IfInsert(),
     new SwitchInsert(),
@@ -94,12 +94,12 @@ public class AddWatcherProcessor extends AbstractProcessor<CtClass<?>> {
     }
 
     // Diplay MAP
-    for (Entry<String, Map<Integer, Boolean>> entry : _Instrumenting.lines.entrySet()) {
-      System.out.println(entry.getKey() + " -> ");
-      for (Integer line : entry.getValue().keySet()) {
-        System.out.println("\t" + line);
-      }
-    }
+    // for (Entry<String, Map<Integer, Boolean>> entry : _Instrumenting.lines.entrySet()) {
+    // System.out.println(entry.getKey() + " -> ");
+    // for (Integer line : entry.getValue().keySet()) {
+    // System.out.println("\t" + line);
+    // }
+    // }
   }
 
   @Override

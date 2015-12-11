@@ -18,7 +18,7 @@ public class ConstructorInsert implements Insertion {
 
   @Override
   public void apply(CtElement element, CtStatement statementToInsert) {
-    CtConstructor ctConstructor = (CtConstructor) element;
+    CtConstructor<?> ctConstructor = (CtConstructor<?>) element;
     List<CtStatement> statements = ctConstructor.getBody().getStatements();
     CtStatement insertAfterThis = statements.stream().filter(statement -> statement instanceof CtSuperAccess || statement instanceof CtThisAccess).findFirst()
       .orElse(statements.get(0));

@@ -16,11 +16,8 @@ public class IfInsert implements Insertion {
   public void apply(CtElement element, CtStatement statementToInsert) {
     CtIf ctIf = (CtIf) element;
     ctIf.getThenStatement().insertBefore(statementToInsert);
-    if (ctIf.getElseStatement() instanceof CtIf) {
-      apply(ctIf.getElseStatement(), statementToInsert);
-    } else if (ctIf.getElseStatement() != null) {
+    if (ctIf.getElseStatement() != null && !(ctIf.getElseStatement() instanceof CtIf))
       ctIf.getElseStatement().insertBefore(statementToInsert);
-    }
 
   }
 }

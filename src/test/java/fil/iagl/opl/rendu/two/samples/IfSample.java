@@ -32,9 +32,7 @@ public class IfSample {
 
     if (args.length > 0)
       System.out.println();
-    else
-
-    if (args.length > 0)
+    else if (args.length > 0)
       System.out.println();
     else if (args.length > 0)
       System.out.println();

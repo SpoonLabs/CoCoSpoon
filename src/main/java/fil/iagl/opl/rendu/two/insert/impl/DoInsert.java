@@ -15,7 +15,7 @@ public class DoInsert implements Insertion {
   @Override
   public void apply(CtElement element, CtStatement statementToInsert) {
     CtDo ctDo = (CtDo) element;
-    ctDo.insertAfter(statementToInsert);
+    ctDo.getBody().insertBefore(statementToInsert);
   }
 
 }

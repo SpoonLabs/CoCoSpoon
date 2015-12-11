@@ -15,8 +15,7 @@ public class TryInsert implements Insertion {
   @Override
   public void apply(CtElement element, CtStatement statementToInsert) {
     CtTry ctTry = (CtTry) element;
-    statementToInsert.setParent(ctTry.getBody());
-    ctTry.getBody().getStatements().add(0, statementToInsert);
+    ctTry.insertBefore(statementToInsert);
   }
 
 }

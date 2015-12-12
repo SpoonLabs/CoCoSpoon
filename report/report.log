@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2015.11.12)  10 DEC 2015 21:33
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2015.12.11)  12 DEC 2015 13:14
 entering extended mode
 **report.tex
 (report.tex
@@ -1120,26 +1120,23 @@ Package: listings 2015/06/04 1.6 (Carsten Heinz)
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\multirow\multirow.sty"
 \bigstrutjot=\dimen208
 )
-(common/command_renews.tex) (common/pagestyles.tex)
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\listings\lstlang1.sty"
-File: lstlang1.sty 2015/06/04 1.6 listings language file
-)
-(report.aux)
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
- ("C:\Program Files (x86)\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
+(common/command_renews.tex) (common/pagestyles.tex) (report.aux)
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count177
 \scratchdimen=\dimen209
@@ -1154,7 +1151,7 @@ LaTeX Font Info:    ... okay on input line 13.
 \everyMPtoPDFconversion=\toks34
 )
 \AtBeginShipoutBox=\box88
-Package hyperref Info: Link coloring OFF on input line 13.
+Package hyperref Info: Link coloring OFF on input line 17.
  ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\hyperref\nameref.sty"
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 
@@ -1163,9 +1160,9 @@ Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
 \c@section@level=\count183
 )
-LaTeX Info: Redefining \ref on input line 13.
-LaTeX Info: Redefining \pageref on input line 13.
-LaTeX Info: Redefining \nameref on input line 13.
+LaTeX Info: Redefining \ref on input line 17.
+LaTeX Info: Redefining \pageref on input line 17.
+LaTeX Info: Redefining \nameref on input line 17.
 
 (report.out) (report.out)
 \@outlinefile=\write4
@@ -1207,14 +1204,14 @@ LaTeX Info: Redefining \nameref on input line 13.
 ABD: EveryShipout initializing macros
 \c@lstlisting=\count184
  (frontmatter/cover.tex
-<images/logo_univ.jpg, id=82, 511.9125pt x 219.82124pt>
+<images/logo_univ.jpg, id=102, 511.9125pt x 219.82124pt>
 File: images/logo_univ.jpg Graphic file (type jpg)
 
 <use images/logo_univ.jpg>
 Package pdftex.def Info: images/logo_univ.jpg used on input line 3.
 (pdftex.def)             Requested size: 153.57494pt x 65.94687pt.
 
-<images/logo_ieea.jpg, id=83, 557.08125pt x 159.59625pt>
+<images/logo_ieea.jpg, id=103, 557.08125pt x 159.59625pt>
 File: images/logo_ieea.jpg Graphic file (type jpg)
 
 <use images/logo_ieea.jpg>
@@ -1238,7 +1235,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-<images/footer.jpg, id=84, 1006.76125pt x 154.5775pt>
+<images/footer.jpg, id=104, 1006.76125pt x 154.5775pt>
 File: images/footer.jpg Graphic file (type jpg)
  <use images/footer.jpg>
 Package pdftex.def Info: images/footer.jpg used on input line 1.
@@ -1277,54 +1274,75 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 
 ]
 Chapitre 1.
-(mainmatter/realisation/approche.tex) (mainmatter/realisation/architecture.tex)
-(mainmatter/realisation/technologie.tex)) (mainmatter/evaluation.tex [5
+(mainmatter/realisation/principe.tex) (mainmatter/realisation/approche.tex)
+(mainmatter/realisation/architecture.tex
 
-]
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[5
+
+] [6pdfTeX warning (ext4): destination with the same identifier (name{figure.1.
+1}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.47 
+     ]
+Overfull \hbox (8.24896pt too wide) in paragraph at lines 50--51
+\OT1/cmr/m/n/12 Le con-troller cap-ture les ac-tions util-isa-teurs sur la vue 
+afin de changer le scope desire. L'utilisateur
+ []
+
+) (mainmatter/realisation/technologie.tex)) (mainmatter/evaluation.tex [7]
 Chapitre 2.
 (mainmatter/evaluation/pertinence.tex) (mainmatter/evaluation/temps.tex)
 (mainmatter/evaluation/memoire.tex) (mainmatter/evaluation/complexite.tex))
-(backmatter/bilan_personnel.tex [6
+(backmatter/bilan_personnel.tex [8
 
-]) (backmatter/conclusion.tex [7
+]) (backmatter/conclusion.tex [9
 
 ])
-(backmatter/references.tex (report.bbl [8
+(backmatter/references.tex (report.bbl [10
 
-])) [9
+])) [11
 
 ]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 24.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 24.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 28.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 28.
  (report.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 24.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 24.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 28.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 28.
 Package rerunfilecheck Info: File `report.out' has not changed.
-(rerunfilecheck)             Checksum: 6BD15AA1D371FA567519C5993F6921D4;712.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 24.
+(rerunfilecheck)             Checksum: 63B1CE228BCB1D675D3A79E87CE08E49;1045.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 28.
  ) 
 Here is how much of TeX's memory you used:
- 26687 strings out of 493673
- 512996 string characters out of 3141535
- 591198 words of memory out of 3000000
- 29602 multiletter control sequences out of 15000+200000
- 10671 words of font info for 37 fonts, out of 3000000 for 9000
+ 26949 strings out of 493673
+ 514903 string characters out of 3141535
+ 572776 words of memory out of 3000000
+ 29842 multiletter control sequences out of 15000+200000
+ 11325 words of font info for 39 fonts, out of 3000000 for 9000
  1025 hyphenation exceptions out of 8191
- 69i,14n,78p,10451b,400s stack positions out of 5000i,500n,10000p,200000b,50000s
-pdfTeX warning (dest): name{Hfootnote.1} has been referenced but does not exi
+ 69i,14n,78p,10451b,1125s stack positions out of 5000i,500n,10000p,200000b,50000s
+pdfTeX warning (dest): name{Hfootnote.2} has been referenced but does not exi
 st, replaced by a fixed one
+
+pdfTeX warning (dest): name{Hfootnote.1} has been referenced but does not exist
+, replaced by a fixed one
 
 <C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C
 :/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><C:
-/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Pr
-ogram Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Progr
-am Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Program 
-Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Program File
-s (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files (x
-86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on report.pdf (9 pages, 194705 bytes).
+/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/P
+rogram Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Prog
+ram Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program
+ Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Fi
+les (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Program Files
+ (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Program Files (x8
+6)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files (x86)/M
+iKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb>
+Output written on report.pdf (11 pages, 227945 bytes).
 PDF statistics:
- 182 PDF objects out of 1000 (max. 8388607)
- 25 named destinations out of 1000 (max. 500000)
- 228 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 249 PDF objects out of 1000 (max. 8388607)
+ 48 named destinations out of 1000 (max. 500000)
+ 268 words of extra memory for PDF output out of 10000 (max. 10000000)
 

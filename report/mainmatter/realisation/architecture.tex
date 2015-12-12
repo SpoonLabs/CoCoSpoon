@@ -1,1 +1,56 @@
 \section{Architecture et design}
+
+\subsection{Instrumentation}
+\label{instrumentation}
+
+Instrumenter les lignes de code exécuté n'est pas quelque chose de difficile. Il suffit simplement d'insérer une nouvelle ligne après chaque ligne existante comme représenté dans l'exemple   \ref{example_instrumentation}. Cette ligne permettra de stocker l'information relative à l'exécution de la ligne instrumenté.
+
+\begin{figure}[h]
+\begin{lstlisting}[linewidth=5.0cm]
+maMethod :
+	instruction
+	instruction
+\end{lstlisting}
+\begin{lstlisting}[linewidth=11cm]
+maMethod :
+	instruction
+	stocker l'execution de la ligne 1
+	instruction
+	stocker l'execution de la ligne 2
+\end{lstlisting}
+
+\caption{Transformation du code original vers le code instrumenté}
+\label{example_instrumentation}
+\end{figure}
+
+\subsection{Interprétation}
+\label{interpretation}
+
+La couverture de ligne se calcule à l'aide de mathématique basique. Appelons $L_{total}$ le nombre de lignes instrumentées et $L_{exec}$ le nombre de lignes exécutées, le taux de couverture de ligne $C$ est alors le suivant :
+\begin{equation}
+C = { L_{exec} \over L_{total} }
+\end{equation}
+Cette interprétation peut être effectuée sur les classes, packages ou encore l'intégralité du projet instrumenté. Notre implémentation permet de visualiser la couverture de ligne pour les différents scopes cités.
+\par C'est lors de l'instrumentation que nous allons calculer $L_{total}$. Ensuite, lors de l'exécution nous pourront calculer dynamiquement $L_{exec}$ et donc $C$ en fonction de scope désiré.
+
+\subsection{Design}
+
+Notre implémentation est conçu sur le design MVC\footnote{Model View Controller}. Les sections suivantes ont pour but de détailler chaque parti du design.
+
+\subsubsection{Model}
+
+Le model de l'application contient les données nécéssaires au calcule du taux de couverture. Comme expliquer dans les sections \ref{instrumentation} et \ref{interpretation}, nous avons besoin de l'ensemble des lignes de code instrumenté, ainsi que de l'ensemble des lignes de code exécuter. Le premier ensemble construit lors de l'instrumentation, le second sera construit dynamiquement à l'exécution du programme instrumenté.
+
+\subsubsection{View}
+
+La vue notifie l'utilisateur de la couverture actuel du programme en cours d'exécution. Cette vue est dynamique, est évolue avec le temps en fonction des modifications sur le model grâce au patron de conception \textit{Observateur/Observable}
+
+\subsubsection{Controller}
+
+Le controller capture les actions utilisateurs sur la vue afin de changer le scope désiré. L'utilisateur peut donc naviguer entre les différent packages ou classe du projet.
+
+\subsection{Injection}
+
+
+
+

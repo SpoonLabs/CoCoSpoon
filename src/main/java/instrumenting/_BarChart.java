@@ -23,7 +23,7 @@ import javafx.collections.ObservableList;
 import javafx.collections.ObservableMap;
 import javafx.event.Event;
 import javafx.event.EventHandler;
-import javafx.scene.Group;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.CategoryAxis;
@@ -32,6 +32,7 @@ import javafx.scene.chart.XYChart;
 import javafx.scene.chart.XYChart.Data;
 import javafx.scene.chart.XYChart.Series;
 import javafx.scene.control.Button;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 /**
@@ -71,9 +72,8 @@ public class _BarChart extends Application {
   private void init(Stage primaryStage) {
     currentList = new ArrayList<>();
 
-    Group root = new Group();
+    StackPane root = new StackPane();
     primaryStage.setScene(new Scene(root));
-    primaryStage.setFullScreen(true);
 
     // Init de la classe la plus haute dans la hierarchie
     classes = new ArrayList<String>();
@@ -89,7 +89,7 @@ public class _BarChart extends Application {
 
     xAxis.setCategories(FXCollections.<String>observableArrayList(classes));
 
-    NumberAxis yAxis = new NumberAxis("pourcentage de couverture", 0.0d, 100.0d, 5.0d);
+    NumberAxis yAxis = new NumberAxis("couverture (%)", 0.0d, 100.0d, 5.0d);
 
     dataList = new ArrayList<>();
 
@@ -110,17 +110,18 @@ public class _BarChart extends Application {
     chart.setAnimated(true);
     // chart.getYAxis().setAutoRanging(true);
     root.getChildren().add(chart);
-    Button bouton = new Button("Retour");
+    Button bouton = new Button("..");
     root.getChildren().add(bouton);
+    StackPane.setAlignment(bouton, Pos.TOP_RIGHT);
 
     for (String map : _Instrumenting.lines.keySet()) {
       ObservableMap<Integer, Boolean> observedMap = FXCollections.observableMap(_Instrumenting.lines.get(map));
       observedMap.addListener(new MapChangeListener<Integer, Boolean>() {
 
         public void onChanged(javafx.collections.MapChangeListener.Change<? extends Integer, ? extends Boolean> changed) {
-          System.out.println(changed);
-          System.out.println(currentList);
-          System.out.println(barChartData.get(0).getData());
+          // System.out.println(changed);
+          // System.out.println(currentList);
+          // System.out.println(barChartData.get(0).getData());
 
           for (String s : currentList) {
             for (Data<String, Number> data : barChartData.get(0).getData()) {

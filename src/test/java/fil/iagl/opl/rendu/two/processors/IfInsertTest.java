@@ -24,23 +24,23 @@ public class IfInsertTest {
     l.addInputResource("src/test/java");
     l.buildModel();
 
-    CtClass<?> ifSample = (CtClass<?>) l.getFactory().Package().getRootPackage().getElements(new NameFilter<>("IfSample")).get(0);
+    CtClass<?> sample = (CtClass<?>) l.getFactory().Package().getRootPackage().getElements(new NameFilter<>("IfSample")).get(0);
 
     Integer nbIf = 12;
     Integer nbStatementToInsert = 15;
     Insertion insertionStrategy = new IfInsert();
     CtStatement statementToInsert = l.getFactory().Code().createCodeSnippetStatement("TO BE INSERT");
     Assertions.assertThat(
-      ifSample.getElements(new TypeFilter<CtElement>(CtElement.class))
+      sample.getElements(new TypeFilter<CtElement>(CtElement.class))
         .stream().filter(insertionStrategy::match).collect(Collectors.toList()))
       .hasSize(nbIf);
 
-    ifSample.getElements(new TypeFilter<CtElement>(CtElement.class))
+    sample.getElements(new TypeFilter<CtElement>(CtElement.class))
       .stream().filter(insertionStrategy::match).forEach(element -> insertionStrategy.apply(element, statementToInsert));
 
-    System.out.println(ifSample);
+    System.out.println(sample);
     Assertions.assertThat(
-      ifSample.getElements(new ContainsSameElementFilter(statementToInsert)))
+      sample.getElements(new ContainsSameElementFilter(statementToInsert)))
       .hasSize(nbStatementToInsert);
 
   }

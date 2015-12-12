@@ -45,7 +45,16 @@ public class _Instrumenting {
       lines = (Map<String, Map<Integer, Boolean>>) ois.readObject();
       ois.close();
 
-      System.out.println("Creating barchart");
+      // KEEP GRAPH OPEN
+      Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
+        public void run() {
+          while (true) {
+          }
+        }
+      }, "Shutdown-thread"));
+
+      // BARCHART VIEW
+
       new Thread(new Runnable() {
 
         @Override
@@ -54,20 +63,11 @@ public class _Instrumenting {
         }
       }).start();
 
-      Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
-        public void run() {
-          while (true) {
-          }
-        }
-      }, "Shutdown-thread"));
+      // TEXT VIEW
 
-      // DO NOT USE
       // new Timer().schedule(new TimerTask() {
-      //
       // @Override
       // public void run() {
-      // for (int i = 0; i < 25; i++)
-      // System.out.println("");
       // _Instrumenting.displayResultPerPackageInConsole(null);
       // }
       // }, 0, 250);

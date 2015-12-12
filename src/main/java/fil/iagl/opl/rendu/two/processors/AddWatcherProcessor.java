@@ -46,7 +46,7 @@ import spoon.reflect.visitor.filter.TypeFilter;
 
 public class AddWatcherProcessor extends AbstractProcessor<CtClass<?>> {
 
-  private static final Predicate<CtElement> needToBeInstrumented = (candidate) -> !(candidate instanceof CtUnaryOperator)
+  public static final Predicate<CtElement> needToBeInstrumented = (candidate) -> !(candidate instanceof CtUnaryOperator)
     && !(candidate instanceof CtClass)
     && !(candidate instanceof CtBlock) && !candidate.isImplicit()
     && !(candidate instanceof CtLiteral)
@@ -56,7 +56,7 @@ public class AddWatcherProcessor extends AbstractProcessor<CtClass<?>> {
     && !(candidate.getParent() instanceof CtLambda)
     && !isInsideIfForSwitchDoWhile(candidate);
 
-  private static final List<Insertion> filters = Arrays.asList(
+  public static final List<Insertion> filters = Arrays.asList(
     new ConstructorInsert(),
     new MethodInsert(),
     new TryInsert(),
@@ -73,7 +73,7 @@ public class AddWatcherProcessor extends AbstractProcessor<CtClass<?>> {
 
   @Override
   public boolean isToBeProcessed(CtClass<?> candidate) {
-    return !candidate.isAnonymous() && !candidate.getPackage().getQualifiedName().startsWith("instrumenting");
+    return !candidate.isAnonymous() && candidate.getPackage() != null && !candidate.getPackage().getQualifiedName().startsWith("instrumenting");
   }
 
   @Override

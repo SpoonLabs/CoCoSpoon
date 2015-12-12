@@ -6,7 +6,7 @@ import org.fest.assertions.Assertions;
 import org.junit.Test;
 
 import fil.iagl.opl.rendu.two.insert.Insertion;
-import fil.iagl.opl.rendu.two.insert.impl.ForInsert;
+import fil.iagl.opl.rendu.two.insert.impl.ConstructorInsert;
 import fil.iagl.opl.rendu.two.tools.ContainsSameElementFilter;
 import spoon.Launcher;
 import spoon.reflect.code.CtStatement;
@@ -15,25 +15,25 @@ import spoon.reflect.declaration.CtElement;
 import spoon.reflect.visitor.filter.NameFilter;
 import spoon.reflect.visitor.filter.TypeFilter;
 
-public class ForInsertTest {
+public class ConstructorInsertTest {
 
   @Test
-  public void instrumentForTest() throws Exception {
+  public void instrumentConstructorTest() throws Exception {
     Launcher l = new Launcher();
 
     l.addInputResource("src/test/java");
     l.buildModel();
 
-    CtClass<?> sample = (CtClass<?>) l.getFactory().Package().getRootPackage().getElements(new NameFilter<>("ForSample")).get(0);
+    CtClass<?> sample = (CtClass<?>) l.getFactory().Package().getRootPackage().getElements(new NameFilter<>("ConstructorSample")).get(0);
 
-    Integer nbFor = 4;
-    Integer nbStatementToInsert = 4;
-    Insertion insertionStrategy = new ForInsert();
+    Integer nbConstructor = 3;
+    Integer nbStatementToInsert = 3;
+    Insertion insertionStrategy = new ConstructorInsert();
     CtStatement statementToInsert = l.getFactory().Code().createCodeSnippetStatement("TO BE INSERT");
     Assertions.assertThat(
       sample.getElements(new TypeFilter<CtElement>(CtElement.class))
         .stream().filter(insertionStrategy::match).collect(Collectors.toList()))
-      .hasSize(nbFor);
+      .hasSize(nbConstructor);
 
     sample.getElements(new TypeFilter<CtElement>(CtElement.class))
       .stream().filter(insertionStrategy::match).forEach(element -> insertionStrategy.apply(element, statementToInsert));
@@ -43,4 +43,5 @@ public class ForInsertTest {
       sample.getElements(new ContainsSameElementFilter(statementToInsert)))
       .hasSize(nbStatementToInsert);
   }
+
 }

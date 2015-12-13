@@ -43,14 +43,16 @@ Le model de l'application contient les données nécéssaires au calcule du taux
 
 \subsubsection{View}
 
-La vue notifie l'utilisateur de la couverture actuel du programme en cours d'exécution. Cette vue est dynamique, est évolue avec le temps en fonction des modifications sur le model grâce au patron de conception \textit{Observateur/Observable}
+La vue notifie l'utilisateur de la couverture actuel du programme en cours d'exécution. Cette vue est dynamique, est évolue avec le temps en fonction des modifications sur le model grâce au patron de conception. \textit{Observateur/Observable}
+\\
+\par Nous avons mis au point deux vues :
+La première est une vue textuellement qui ne permet pas la navigation entre les différents packages, mais qui pour un surcout moindre nous donne le détail de l'un d'entre eux fixé au début de l'exécution.
+La seconde est une vue graphique qui débute à la racine du projet. Il est ensuite possible de naviguer de package en package en cliquant sur ceux ci.
 
 \subsubsection{Controller}
 
 Le controller capture les actions utilisateurs sur la vue afin de changer le scope désiré. L'utilisateur peut donc naviguer entre les différent packages ou classe du projet.
 
 \subsection{Injection}
-
-
 
 

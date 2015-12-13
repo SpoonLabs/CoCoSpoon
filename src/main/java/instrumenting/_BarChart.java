@@ -142,17 +142,19 @@ public class _BarChart extends Application {
         for (Series<String, Number> serie : barChartData) {
           for (XYChart.Data<String, Number> item : serie.getData()) {
             item.getNode().setOnMousePressed((Event event2) -> {
-              retMap = new HashMap<String, Integer>();
-              current = item.getXValue();
-              Map<String, Integer> changeTo = getPackageResult(item.getXValue());
-              changeTo.remove(item.getXValue());
+              if (!isClass(item.getXValue())) {
+                retMap = new HashMap<String, Integer>();
+                current = item.getXValue();
+                Map<String, Integer> changeTo = getPackageResult(item.getXValue());
+                changeTo.remove(item.getXValue());
 
-              currentList = new ArrayList<>();
-              for (String s : changeTo.keySet()) {
-                currentList.add(s);
+                currentList = new ArrayList<>();
+                for (String s : changeTo.keySet()) {
+                  currentList.add(s);
+                }
+
+                refresh(changeTo);
               }
-
-              refresh(changeTo);
             });
           }
         }
@@ -180,28 +182,32 @@ public class _BarChart extends Application {
       }
 
     });
-    // observedMap.remove("org.fr.fil.iagl.class4");
-    // observedMap.put("org.fr.fil.iagl.class4", tmp3);
-    // _Instrumenting.lines.get("org.fr.fil.iagl.class4").remove(1);
   }
 
   private void refresh(Map<String, Integer> changeTo) {
     dataList.clear();
     classes.clear();
-    // currentList.clear();
-    // observedMap.clear();
-    // _Instrumenting.lines.clear();
     barChartData.get(0).getData().clear();
     for (String s : changeTo.keySet()) {
       classes.add(s);
-      // dataList.add(new BarChart.Data(s, changeTo.get(s)));
-      barChartData.get(0).getData().add(new XYChart.Data<String, Number>(s, changeTo.get(s)));
+      XYChart.Data<String, Number> barTmp = new XYChart.Data<>();
+      barTmp.setXValue(s);
+      barTmp.setYValue(changeTo.get(s));
+      barChartData.get(0).getData().add(barTmp);
+      if (isClass(s)) {
+        barTmp.getNode().setStyle("-fx-bar-fill: navy;");
+      }
+      // barChartData.get(0).getData().add(new XYChart.Data<String, Number>(s, changeTo.get(s)));
     }
 
   }
 
   public boolean isToRefresh(String key) {
     return (currentList.contains(key));
+  }
+
+  private boolean isClass(String s) {
+    return _Instrumenting.lines.keySet().contains(s);
   }
 
   @Override

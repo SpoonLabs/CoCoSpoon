@@ -16,7 +16,6 @@
 \contentsline {section}{\numberline {2.1}Pertinence}{8}{section.2.1}
 \contentsline {section}{\numberline {2.2}Temps}{8}{section.2.2}
 \contentsline {section}{\numberline {2.3}M\IeC {\'e}moire}{8}{section.2.3}
-\contentsline {section}{\numberline {2.4}Complexit\IeC {\'e}}{8}{section.2.4}
-\contentsline {chapter}{Bilan personnel}{9}{chapter*.5}
-\contentsline {chapter}{Conclusion}{10}{chapter*.6}
-\contentsline {chapter}{R\IeC {\'e}f\IeC {\'e}rences}{11}{chapter*.7}
+\contentsline {chapter}{Bilan personnel}{10}{chapter*.5}
+\contentsline {chapter}{Conclusion}{11}{chapter*.6}
+\contentsline {chapter}{R\IeC {\'e}f\IeC {\'e}rences}{12}{chapter*.7}

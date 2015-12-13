@@ -89,7 +89,7 @@ public class _BarChart extends Application {
 
     xAxis.setCategories(FXCollections.<String>observableArrayList(classes));
 
-    NumberAxis yAxis = new NumberAxis("couverture (%)", 0.0d, 100.0d, 5.0d);
+    NumberAxis yAxis = new NumberAxis("Cover (%)", 0.0d, 100.0d, 5.0d);
 
     dataList = new ArrayList<>();
 

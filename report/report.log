@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2015.12.11)  13 DEC 2015 14:46
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2015.12.11)  13 DEC 2015 19:45
 entering extended mode
 **report.tex
 (report.tex
@@ -1246,14 +1246,14 @@ Package: lscape 2000/10/22 v3.01 Landscape Pages (DPC)
 Package pdflscape Info: Auto-detected driver: pdftex on input line 80.
 )
 (frontmatter/cover.tex
-<images/logo_univ.jpg, id=106, 511.9125pt x 219.82124pt>
+<images/logo_univ.jpg, id=102, 511.9125pt x 219.82124pt>
 File: images/logo_univ.jpg Graphic file (type jpg)
 
 <use images/logo_univ.jpg>
 Package pdftex.def Info: images/logo_univ.jpg used on input line 3.
 (pdftex.def)             Requested size: 153.57494pt x 65.94687pt.
 
-<images/logo_ieea.jpg, id=107, 557.08125pt x 159.59625pt>
+<images/logo_ieea.jpg, id=103, 557.08125pt x 159.59625pt>
 File: images/logo_ieea.jpg Graphic file (type jpg)
 
 <use images/logo_ieea.jpg>
@@ -1277,7 +1277,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-<images/footer.jpg, id=108, 1006.76125pt x 154.5775pt>
+<images/footer.jpg, id=104, 1006.76125pt x 154.5775pt>
 File: images/footer.jpg Graphic file (type jpg)
  <use images/footer.jpg>
 Package pdftex.def Info: images/footer.jpg used on input line 1.
@@ -1355,7 +1355,7 @@ Overfull \hbox (8.24896pt too wide) in paragraph at lines 52--53
 afin de changer le scope desire. L'utilisateur
  []
 
-<images/workflowOPL2.pdf, id=187, 662.475pt x 248.93pt>
+<images/workflowOPL2.pdf, id=182, 662.475pt x 248.93pt>
 File: images/workflowOPL2.pdf Graphic file (type pdf)
 
 <use images/workflowOPL2.pdf>
@@ -1377,9 +1377,19 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
 l.1 \chapter
             {Évaluation} <./images/workflowOPL2.pdf>]
 Chapitre 2.
-(mainmatter/evaluation/pertinence.tex) (mainmatter/evaluation/temps.tex)
-(mainmatter/evaluation/memoire.tex) (mainmatter/evaluation/complexite.tex))
-(backmatter/bilan_personnel.tex
+(mainmatter/evaluation/pertinence.tex) (mainmatter/evaluation/temps.tex
+Overfull \hbox (1.34726pt too wide) in paragraph at lines 8--28
+ [][] 
+ []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+) (mainmatter/evaluation/memoire.tex
+Overfull \hbox (1.34726pt too wide) in paragraph at lines 8--28
+ [][] 
+ []
+
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 15.71667pt.
@@ -1388,14 +1398,39 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
 
 [8
 
-]) (backmatter/conclusion.tex
+pdfTeX warning (ext4): destination with the same identifier (name{figure.2.1}) 
+has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.30 \end{table}
+                ])) (backmatter/bilan_personnel.tex
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 15.71667pt.
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[9
+[9pdfTeX warning (ext4): destination with the same identifier (name{table.2.1})
+ has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.1 \chapter
+            *{Bilan personnel}pdfTeX warning (ext4): destination with the same 
+identifier (name{table.2.2}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.1 \chapter
+            *{Bilan personnel}]) (backmatter/conclusion.tex
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 15.71667pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[10
 
 ]) (backmatter/references.tex (report.bbl
 
@@ -1404,7 +1439,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[10
+[11
 
 ]))
 
@@ -1413,7 +1448,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[11
+[12
 
 ]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 28.
@@ -1422,14 +1457,14 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 28.
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 28.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 28.
 Package rerunfilecheck Info: File `report.out' has not changed.
-(rerunfilecheck)             Checksum: E1F8523FEAE7C0ED4C8B91142135A2E9;1104.
+(rerunfilecheck)             Checksum: 15C5A8BF9167CF8F5FA79EA71BE4E5A7;1043.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 28.
  ) 
 Here is how much of TeX's memory you used:
- 27676 strings out of 493673
- 526557 string characters out of 3141535
- 589300 words of memory out of 3000000
- 30539 multiletter control sequences out of 15000+200000
+ 27681 strings out of 493673
+ 526577 string characters out of 3141535
+ 591586 words of memory out of 3000000
+ 30544 multiletter control sequences out of 15000+200000
  11325 words of font info for 39 fonts, out of 3000000 for 9000
  1025 hyphenation exceptions out of 8191
  69i,14n,78p,10451b,1127s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1449,9 +1484,9 @@ les (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Program Files
  (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Program Files (x8
 6)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files (x86)/M
 iKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on report.pdf (11 pages, 258134 bytes).
+Output written on report.pdf (12 pages, 262351 bytes).
 PDF statistics:
- 264 PDF objects out of 1000 (max. 8388607)
- 50 named destinations out of 1000 (max. 500000)
- 281 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 269 PDF objects out of 1000 (max. 8388607)
+ 53 named destinations out of 1000 (max. 500000)
+ 273 words of extra memory for PDF output out of 10000 (max. 10000000)
 

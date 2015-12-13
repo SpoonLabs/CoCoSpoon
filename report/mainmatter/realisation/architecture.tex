@@ -3,7 +3,7 @@
 \subsection{Instrumentation}
 \label{instrumentation}
 
-Instrumenter les lignes de code exécuté n'est pas quelque chose de difficile. Il suffit simplement d'insérer une nouvelle ligne après chaque ligne existante comme représenté dans l'exemple   \ref{example_instrumentation}. Cette ligne permettra de stocker l'information relative à l'exécution de la ligne instrumenté.
+Instrumenter les lignes de code exécutées n'est pas quelque chose de difficile. Il suffit simplement d'insérer une nouvelle ligne après chaque ligne existante comme représenté dans l'exemple   \ref{example_instrumentation}. Ces lignes permettront de stocker les informations relatives à l'exécution des lignes instrumentées.
 
 \begin{figure}[h]
 \begin{lstlisting}[linewidth=5.0cm]
@@ -31,7 +31,7 @@ La couverture de ligne se calcule à l'aide de mathématique basique. Appelons $
 C = { L_{exec} \over L_{total} }
 \end{equation}
 Cette interprétation peut être effectuée sur les classes, packages ou encore l'intégralité du projet instrumenté. Notre implémentation permet de visualiser la couverture de ligne pour les différents scopes cités.
-\par C'est lors de l'instrumentation que nous allons calculer $L_{total}$. Ensuite, lors de l'exécution nous pourront calculer dynamiquement $L_{exec}$ et donc $C$ en fonction de scope désiré.
+\par C'est lors de l'instrumentation que nous allons calculer $L_{total}$. Ensuite, lors de l'exécution nous pourront calculer dynamiquement $L_{exec}$ et donc $C$ en fonction du scope désiré.
 
 \subsection{Design}
 
@@ -39,7 +39,7 @@ Notre implémentation est conçu sur le design MVC\footnote{Model View Controlle
 
 \subsubsection{Model}
 
-Le model de l'application contient les données nécéssaires au calcule du taux de couverture. Comme expliquer dans les sections \ref{instrumentation} et \ref{interpretation}, nous avons besoin de l'ensemble des lignes de code instrumenté, ainsi que de l'ensemble des lignes de code exécuter. Le premier ensemble construit lors de l'instrumentation, le second sera construit dynamiquement à l'exécution du programme instrumenté.
+Le model de l'application contient les données nécéssaires au calcul du taux de couverture. Comme expliquer dans les sections \ref{instrumentation} et \ref{interpretation}, nous avons besoin de l'ensemble des lignes de code instrumenté, ainsi que de l'ensemble des lignes de code exécuter. Le premier ensemble est construit lors de l'instrumentation, le second sera construit dynamiquement lors de l'exécution du programme instrumenté.
 
 \subsubsection{View}
 
@@ -51,6 +51,14 @@ Le controller capture les actions utilisateurs sur la vue afin de changer le sco
 
 \subsection{Injection}
 
+Lors de la phase d'instrumentation du programme, les lignes permettant de calculer $L_{exec}$ ne sont pas les seules à être insérées. Notre MVC est également injecter dans le projet pour que ce dernier puisse d'auto-instrumenter et notifier sa couverture à l'utilisateur. Notre programme est uniquement utilisé pour instrumenté un programme. Il suffira ensuite de démarrer le programme exécuté pour avoir le comportement voulu. La figure \ref{workflow} représente le workflow de notre approche. 
 
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.5]{workflowOPL2.pdf}
+
+\caption{Workflow}
+\label{workflow}
+\end{figure}
 
 

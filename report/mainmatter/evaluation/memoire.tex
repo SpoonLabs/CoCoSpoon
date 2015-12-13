@@ -1,1 +1,30 @@
 \section{Mémoire}
+\label{memoire}
+
+L'évaluation sur la quantité de mémoire maximale utilisée été réalisée sur dix exécution successif du programme. La mesure est celle retourné par VisualVM lors de l'exécution des tests. La table \ref{evaluation_memoire} représente les résultats obtenus.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|c|c|c|}
+\hline
+         & Commons Lang & Commons Lang' + Vue Text & Commons Lang + JavaFX\\
+         \hline
+Run 1     & 459  & 526       & 469        \\
+Run 2     & 426  & 495       & 430        \\
+Run 3     & 416  & 453       & 432        \\
+Run 4     & 485  & 596       & 419        \\
+Run 5     & 455  & 419       & 422        \\
+Run 6     & 443  & 499       & 453        \\
+Run 7     & 541  & 459       & 333        \\
+Run 8     & 403  & 526       & 470        \\
+Run 9     & 450  & 482       & 396        \\
+Run 10    & 504  & 513       & 473        \\
+\hline
+Moyenne  & 458.2  & 496.8       & 429.7        \\
+\hline
+Overhead (\%) & -  & 8.42       & 6.22   \\
+\hline    
+\end{tabular}
+\caption{Comparatif sur la quantité de mémoire maximale utilisée lors de l'exécution en Mo}
+\label{evaluation_memoire}
+\end{table}

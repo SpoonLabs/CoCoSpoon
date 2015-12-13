@@ -1,1 +1,30 @@
 \section{Temps}
+\label{temps}
+
+L'évaluation sur le temps d'exécution a été réalisé sur dix exécution successif du programme. La mesure du temps d'exécution est celle retourné par le framework JUnit lors de l'exécution des tests. La table \ref{evaluation_temps} représente les résultats obtenus.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|c|c|c|}
+\hline
+         & Commons Lang & Commons Lang' + Vue Text & Commons Lang + JavaFX\\
+         \hline
+Run 1     & 20.038  & 26.756       & 38.772        \\
+Run 2     & 19.605  & 27.020       & 38.450        \\
+Run 3     & 19.059  & 26.800       & 38.282        \\
+Run 4     & 19.417  & 28.094       & 40.412        \\
+Run 5     & 18.810  & 26.016       & 38.834        \\
+Run 6     & 20.399  & 27.881       & 39.228        \\
+Run 7     & 19.905  & 26.739       & 38.958        \\
+Run 8     & 18.737  & 27.293       & 39.102        \\
+Run 9     & 18.963  & 26.199       & 39.056        \\
+Run 10    & 19.500  & 27.882       & 38.637        \\
+\hline
+Moyenne  & 19.486  & 27.062       & 38.973        \\
+\hline
+Overhead (\%) & -  & 38.88       & 100.01   \\
+\hline    
+\end{tabular}
+\caption{Comparatif sur le temps d'exécution en seconde}
+\label{evaluation_temps}
+\end{table}

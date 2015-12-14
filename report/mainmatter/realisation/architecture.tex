@@ -6,11 +6,19 @@
 Instrumenter les lignes de code exécutées n'est pas quelque chose de difficile. Il suffit simplement d'insérer une nouvelle ligne après chaque ligne existante comme représenté dans l'exemple   \ref{example_instrumentation}. Ces lignes permettront de stocker les informations relatives à l'exécution des lignes instrumentées.
 
 \begin{figure}[h]
+
+\begin{minipage}{.45\linewidth}
+
 \begin{lstlisting}[linewidth=5.0cm]
-maMethod :
+maMethod :		
 	instruction
 	instruction
 \end{lstlisting}
+
+\end{minipage}
+\hfill
+\begin{minipage}{.45\linewidth}
+
 \begin{lstlisting}[linewidth=11cm]
 maMethod :
 	instruction
@@ -19,11 +27,12 @@ maMethod :
 	stocker l'execution de la ligne 2
 \end{lstlisting}
 
+\end{minipage}
+
+
 \caption{Transformation du code original vers le code instrumenté}
 \label{example_instrumentation}
 \end{figure}
-
-TODO: aligner les codes figure 1.1
 
 \subsection{Interprétation}
 \label{interpretation}

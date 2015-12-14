@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2015.12.11)  13 DEC 2015 19:45
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2015.12.11)  14 DEC 2015 18:11
 entering extended mode
 **report.tex
 (report.tex
@@ -1119,40 +1119,44 @@ Package: listings 2015/06/04 1.6 (Carsten Heinz)
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\multirow\multirow.sty"
 \bigstrutjot=\dimen208
-))
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\pdfpages\pdfpages.sty"
-Package: pdfpages 2015/09/18 v0.5d Insert pages of external PDF documents (AM)
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\wrapfig\wrapfig.sty"
+\wrapoverhang=\dimen209
+\WF@size=\dimen210
+\c@WF@wrappedlines=\count177
+\WF@box=\box87
+\WF@everypar=\toks33
+Package: wrapfig 2003/01/31  v 3.6
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\lscape.sty"
+Package: lscape 2000/10/22 v3.01 Landscape Pages (DPC)
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\rotating\rotating.sty"
+Package: rotating 2009/03/28 v2.16a rotated objects in LaTeX
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\ifthen.sty"
 Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\tools\calc.sty"
-Package: calc 2014/10/28 v4.3 Infix arithmetic (KKT,FJ)
-\calc@Acount=\count177
-\calc@Bcount=\count178
-\calc@Adimen=\dimen209
-\calc@Bdimen=\dimen210
-\calc@Askip=\skip162
-\calc@Bskip=\skip163
-LaTeX Info: Redefining \setlength on input line 80.
-LaTeX Info: Redefining \addtolength on input line 81.
-\calc@Ccount=\count179
-\calc@Cskip=\skip164
-)
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\eso-pic\eso-pic.sty"
-Package: eso-pic 2015/07/21 v2.0g eso-pic (RN)
-)
-\AM@pagewidth=\dimen211
-\AM@pageheight=\dimen212
+\c@r@tfl@t=\count178
+\rotFPtop=\skip162
+\rotFPbot=\skip163
+\rot@float@box=\box88
+\rot@mess@toks=\toks34
+))
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\oberdiek\epstopdf.sty"
+Package: epstopdf 2010/02/09 v2.5 Conversion with epstopdf on the fly (HO)
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\pdfpages\pppdftex.def"
-File: pppdftex.def 2015/09/18 v0.5d Pdfpages driver for pdfTeX (AM)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\oberdiek\epstopdf-base.sty"
+Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\oberdiek\grfext.sty"
+Package: grfext 2010/08/19 v1.1 Manage graphics extensions (HO)
 )
-\AM@pagebox=\box87
-\AM@toc@title=\toks33
-\c@AM@survey=\count180
-\AM@templatesizebox=\box88
-)
+Package grfext Info: Graphics extension search list:
+(grfext)             [.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPE
+G,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 452.
+))
 (common/command_renews.tex) (common/pagestyles.tex) (report.aux)
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 17.
 LaTeX Font Info:    ... okay on input line 17.
@@ -1171,17 +1175,17 @@ LaTeX Font Info:    ... okay on input line 17.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count181
-\scratchdimen=\dimen213
+\scratchcounter=\count179
+\scratchdimen=\dimen211
 \scratchbox=\box89
-\nofMPsegments=\count182
-\nofMParguments=\count183
-\everyMPshowfont=\toks34
-\MPscratchCnt=\count184
-\MPscratchDim=\dimen214
-\MPnumerator=\count185
-\makeMPintoPDFobject=\count186
-\everyMPtoPDFconversion=\toks35
+\nofMPsegments=\count180
+\nofMParguments=\count181
+\everyMPshowfont=\toks35
+\MPscratchCnt=\count182
+\MPscratchDim=\dimen212
+\MPnumerator=\count183
+\makeMPintoPDFobject=\count184
+\everyMPtoPDFconversion=\toks36
 )
 \AtBeginShipoutBox=\box90
 Package hyperref Info: Link coloring OFF on input line 17.
@@ -1191,7 +1195,7 @@ Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\gettitlestring.sty"
 Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
-\c@section@level=\count187
+\c@section@level=\count185
 )
 LaTeX Info: Redefining \ref on input line 17.
 LaTeX Info: Redefining \pageref on input line 17.
@@ -1235,25 +1239,16 @@ LaTeX Info: Redefining \nameref on input line 17.
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 ABD: EveryShipout initializing macros
-\c@lstlisting=\count188
-
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\oberdiek\pdflscape.sty"
-Package: pdflscape 2008/08/11 v0.10 Display of landscape pages in PDF (HO)
-
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\lscape.sty"
-Package: lscape 2000/10/22 v3.01 Landscape Pages (DPC)
-)
-Package pdflscape Info: Auto-detected driver: pdftex on input line 80.
-)
-(frontmatter/cover.tex
-<images/logo_univ.jpg, id=102, 511.9125pt x 219.82124pt>
+\c@lstlisting=\count186
+ (frontmatter/cover.tex
+<images/logo_univ.jpg, id=106, 511.9125pt x 219.82124pt>
 File: images/logo_univ.jpg Graphic file (type jpg)
 
 <use images/logo_univ.jpg>
 Package pdftex.def Info: images/logo_univ.jpg used on input line 3.
 (pdftex.def)             Requested size: 153.57494pt x 65.94687pt.
 
-<images/logo_ieea.jpg, id=103, 557.08125pt x 159.59625pt>
+<images/logo_ieea.jpg, id=107, 557.08125pt x 159.59625pt>
 File: images/logo_ieea.jpg Graphic file (type jpg)
 
 <use images/logo_ieea.jpg>
@@ -1264,12 +1259,18 @@ Underfull \hbox (badness 10000) in paragraph at lines 3--5
 
  []
 
+<images/logoCoCoSpoon.png, id=108, 193.47281pt x 231.86626pt>
+File: images/logoCoCoSpoon.png Graphic file (type png)
+
+<use images/logoCoCoSpoon.png>
+Package pdftex.def Info: images/logoCoCoSpoon.png used on input line 12.
+(pdftex.def)             Requested size: 116.08458pt x 139.12082pt.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <20.74> on input line 22.
+(Font)              <20.74> on input line 26.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <14.4> on input line 22.
+(Font)              <14.4> on input line 26.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 22.
+(Font)              <12> on input line 26.
 ) (common/blank_page.tex
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1277,7 +1278,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-<images/footer.jpg, id=104, 1006.76125pt x 154.5775pt>
+<images/footer.jpg, id=110, 1006.76125pt x 154.5775pt>
 File: images/footer.jpg Graphic file (type jpg)
  <use images/footer.jpg>
 Package pdftex.def Info: images/footer.jpg used on input line 1.
@@ -1291,18 +1292,17 @@ Package Fancyhdr Warning: \footskip is too small (30.0pt):
 
 [1{C:/Users/RMS/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}
 
- <./images/logo_univ.jpg> <./images/logo_ieea.jpg> <./images/footer.jpg>] [2]) 
-(report.toc
+ <./images/logo_univ.jpg> <./images/logo_ieea.jpg> <./images/logoCoCoSpoon.png>
+ <./images/footer.jpg>] [2]) (report.toc
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <8> on input line 1.
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <6> on input line 1.
 )
 \tf@toc=\write5
+ (frontmatter/introduction.tex
 
-(frontmatter/introduction.tex
-
-Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+Package Fancyhdr Warning: \headheight is too small (14.49998pt): 
  Make it at least 15.71667pt.
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
@@ -1312,14 +1312,7 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <7> on input line 7.
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <5> on input line 7.
-) (mainmatter/realisation.tex
-
-Package Fancyhdr Warning: \headheight is too small (12.0pt): 
- Make it at least 14.49998pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
-
-[4
+) (mainmatter/realisation.tex [4
 
 ]
 Chapitre 1.
@@ -1328,127 +1321,214 @@ Chapitre 1.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-
-Package Fancyhdr Warning: \headheight is too small (12.0pt): 
- Make it at least 14.49998pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
-
 [5
 
 ]
-
-Package Fancyhdr Warning: \headheight is too small (12.0pt): 
- Make it at least 14.49998pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
+Overfull \hbox (8.24896pt too wide) in paragraph at lines 61--62
+\OT1/cmr/m/n/12 Le con-troller cap-ture les ac-tions util-isa-teurs sur la vue 
+afin de changer le scope desire. L'utilisateur
+ []
 
 [6pdfTeX warning (ext4): destination with the same identifier (name{figure.1.1}
 ) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.49 
-     ]
-Overfull \hbox (8.24896pt too wide) in paragraph at lines 52--53
-\OT1/cmr/m/n/12 Le con-troller cap-ture les ac-tions util-isa-teurs sur la vue 
-afin de changer le scope desire. L'utilisateur
- []
-
-<images/workflowOPL2.pdf, id=182, 662.475pt x 248.93pt>
+l.63 \subsection
+                {Injection}]
+<images/workflowOPL2.pdf, id=191, 662.475pt x 248.93pt>
 File: images/workflowOPL2.pdf Graphic file (type pdf)
 
 <use images/workflowOPL2.pdf>
-Package pdftex.def Info: images/workflowOPL2.pdf used on input line 60.
+Package pdftex.def Info: images/workflowOPL2.pdf used on input line 69.
 (pdftex.def)             Requested size: 331.2367pt x 124.46469pt.
 ) (mainmatter/realisation/technologie.tex)
-(mainmatter/realisation/screenshots.tex)) (mainmatter/evaluation.tex
+(mainmatter/realisation/screenshots.tex
+<images/Root_view.png, id=192, 1443.89438pt x 782.17218pt>
+File: images/Root_view.png Graphic file (type png)
 
-Package Fancyhdr Warning: \headheight is too small (12.0pt): 
- Make it at least 14.49998pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
+<use images/Root_view.png>
+Package pdftex.def Info: images/Root_view.png used on input line 4.
+(pdftex.def)             Requested size: 483.69687pt x 262.02036pt.
 
-[7pdfTeX warning (ext4): destination with the same identifier (name{figure.1.2}
+<images/package_view.png, id=193, 1445.4pt x 779.16093pt>
+File: images/package_view.png Graphic file (type png)
+
+<use images/package_view.png>
+Package pdftex.def Info: images/package_view.png used on input line 9.
+(pdftex.def)             Requested size: 483.69687pt x 260.73816pt.
+
+<images/couverture_classe.png, id=194, 1445.4pt x 780.66656pt>
+File: images/couverture_classe.png Graphic file (type png)
+
+<use images/couverture_classe.png>
+Package pdftex.def Info: images/couverture_classe.png used on input line 14.
+(pdftex.def)             Requested size: 483.69687pt x 261.242pt.
+)) (mainmatter/evaluation.tex [7pdfTeX warning (ext4): destination with the sam
+e identifier (name{figure.1.2}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.1 \chapter
+            {Évaluation} <./images/workflowOPL2.pdf>] [8pdfTeX warning (ext4):
+ destination with the same identifier (name{figure.1.3}) has been already used,
+ duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.1 \chapter
+            {Évaluation}pdfTeX warning (ext4): destination with the same ident
+ifier (name{figure.1.4}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.1 \chapter
+            {Évaluation} <./images/Root_view.png> <./images/package_view.png>]
+[9pdfTeX warning (ext4): destination with the same identifier (name{figure.1.5}
 ) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.1 \chapter
-            {Évaluation} <./images/workflowOPL2.pdf>]
+            {Évaluation} <./images/couverture_classe.png>]
 Chapitre 2.
 (mainmatter/evaluation/pertinence.tex) (mainmatter/evaluation/temps.tex
 Overfull \hbox (1.34726pt too wide) in paragraph at lines 8--28
  [][] 
  []
 
+) (mainmatter/evaluation/memoire.tex [10
 
-LaTeX Warning: `h' float specifier changed to `ht'.
+pdfTeX warning (ext4): destination with the same identifier (name{table.2.1}) h
+as been already used, duplicate ignored
 
-) (mainmatter/evaluation/memoire.tex
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.1 \section
+            {Mémoire}]
 Overfull \hbox (1.34726pt too wide) in paragraph at lines 8--28
  [][] 
  []
 
-
-Package Fancyhdr Warning: \headheight is too small (12.0pt): 
- Make it at least 15.71667pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
-
-[8
-
-pdfTeX warning (ext4): destination with the same identifier (name{figure.2.1}) 
-has been already used, duplicate ignored
+) (mainmatter/evaluation/limitation.tex [11pdfTeX warning (ext4): destination w
+ith the same identifier (name{table.2.2}) has been already used, duplicate igno
+red
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.30 \end{table}
-                ])) (backmatter/bilan_personnel.tex
+l.1 \section
+            {Limitations}]
+Underfull \hbox (badness 10000) in paragraph at lines 3--4
 
-Package Fancyhdr Warning: \headheight is too small (12.0pt): 
- Make it at least 15.71667pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
+ []
 
-[9pdfTeX warning (ext4): destination with the same identifier (name{table.2.1})
- has been already used, duplicate ignored
+
+Overfull \hbox (2.56985pt too wide) in paragraph at lines 4--5
+[]\OT1/cmr/m/n/12 Premierement, comme decrit dans la sec-tion []2.2[] l'overhe
+ad est as-sez consequent. L'utilisateur
+ []
+
+)) (backmatter/bilan_personnel.tex [12pdfTeX warning (ext4): destination with t
+he same identifier (name{table.2.3}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.1 \chapter
-            *{Bilan personnel}pdfTeX warning (ext4): destination with the same 
-identifier (name{table.2.2}) has been already used, duplicate ignored
+            *{Bilan personnel}]) (backmatter/conclusion.tex [13
 
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.1 \chapter
-            *{Bilan personnel}]) (backmatter/conclusion.tex
+]
+Underfull \hbox (badness 10000) in paragraph at lines 8--25
 
-Package Fancyhdr Warning: \headheight is too small (12.0pt): 
- Make it at least 15.71667pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
+ []
 
-[10
 
-]) (backmatter/references.tex (report.bbl
+Underfull \hbox (badness 10000) in paragraph at lines 8--25
 
-Package Fancyhdr Warning: \headheight is too small (12.0pt): 
- Make it at least 14.49998pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
+ []
 
-[11
+
+Underfull \hbox (badness 10000) in paragraph at lines 8--25
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 8--25
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 8--25
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 8--25
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 8--25
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 8--25
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 8--25
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 8--25
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 8--25
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 8--25
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 8--25
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 8--25
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 8--25
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 8--25
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 8--25
+
+ []
+
+File: images/logoCoCoSpoon.png Graphic file (type png)
+<use images/logoCoCoSpoon.png>
+Package pdftex.def Info: images/logoCoCoSpoon.png used on input line 27.
+(pdftex.def)             Requested size: 116.08458pt x 139.12082pt.
+) (backmatter/references.tex (report.bbl [14
 
 ]))
-
-Package Fancyhdr Warning: \headheight is too small (12.0pt): 
- Make it at least 14.49998pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
-
-[12
+[15
 
 ]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 28.
@@ -1457,17 +1537,17 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 28.
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 28.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 28.
 Package rerunfilecheck Info: File `report.out' has not changed.
-(rerunfilecheck)             Checksum: 15C5A8BF9167CF8F5FA79EA71BE4E5A7;1043.
+(rerunfilecheck)             Checksum: 815A63DACE29D1EA7AFEC8135523DFB2;1102.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 28.
  ) 
 Here is how much of TeX's memory you used:
- 27681 strings out of 493673
- 526577 string characters out of 3141535
- 591586 words of memory out of 3000000
- 30544 multiletter control sequences out of 15000+200000
+ 27296 strings out of 493673
+ 520526 string characters out of 3141535
+ 579714 words of memory out of 3000000
+ 30144 multiletter control sequences out of 15000+200000
  11325 words of font info for 39 fonts, out of 3000000 for 9000
  1025 hyphenation exceptions out of 8191
- 69i,14n,78p,10451b,1127s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 69i,14n,78p,10451b,1161s stack positions out of 5000i,500n,10000p,200000b,50000s
 pdfTeX warning (dest): name{Hfootnote.2} has been referenced but does not exi
 st, replaced by a fixed one
 
@@ -1484,9 +1564,9 @@ les (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Program Files
  (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Program Files (x8
 6)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files (x86)/M
 iKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on report.pdf (12 pages, 262351 bytes).
+Output written on report.pdf (15 pages, 370527 bytes).
 PDF statistics:
- 269 PDF objects out of 1000 (max. 8388607)
- 53 named destinations out of 1000 (max. 500000)
- 273 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 299 PDF objects out of 1000 (max. 8388607)
+ 60 named destinations out of 1000 (max. 500000)
+ 301 words of extra memory for PDF output out of 10000 (max. 10000000)
 

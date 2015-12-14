@@ -7,15 +7,16 @@
 \contentsline {subsection}{\numberline {1.3.2}Interpr\IeC {\'e}tation}{6}{subsection.1.3.2}
 \contentsline {subsection}{\numberline {1.3.3}Design}{6}{subsection.1.3.3}
 \contentsline {subsubsection}{Model}{6}{section*.2}
-\contentsline {subsubsection}{View}{7}{section*.3}
+\contentsline {subsubsection}{View}{6}{section*.3}
 \contentsline {subsubsection}{Controller}{7}{section*.4}
 \contentsline {subsection}{\numberline {1.3.4}Injection}{7}{subsection.1.3.4}
 \contentsline {section}{\numberline {1.4}Technologie}{7}{section.1.4}
 \contentsline {section}{\numberline {1.5}Screenshots}{7}{section.1.5}
-\contentsline {chapter}{\numberline {2}\IeC {\'E}valuation}{8}{chapter.2}
-\contentsline {section}{\numberline {2.1}Pertinence}{8}{section.2.1}
-\contentsline {section}{\numberline {2.2}Temps}{8}{section.2.2}
-\contentsline {section}{\numberline {2.3}M\IeC {\'e}moire}{8}{section.2.3}
-\contentsline {chapter}{Bilan personnel}{10}{chapter*.5}
-\contentsline {chapter}{Conclusion}{11}{chapter*.6}
-\contentsline {chapter}{R\IeC {\'e}f\IeC {\'e}rences}{12}{chapter*.7}
+\contentsline {chapter}{\numberline {2}\IeC {\'E}valuation}{10}{chapter.2}
+\contentsline {section}{\numberline {2.1}Pertinence}{10}{section.2.1}
+\contentsline {section}{\numberline {2.2}Temps}{10}{section.2.2}
+\contentsline {section}{\numberline {2.3}M\IeC {\'e}moire}{11}{section.2.3}
+\contentsline {section}{\numberline {2.4}Limitations}{12}{section.2.4}
+\contentsline {chapter}{Bilan personnel}{13}{chapter*.5}
+\contentsline {chapter}{Conclusion}{14}{chapter*.6}
+\contentsline {chapter}{R\IeC {\'e}f\IeC {\'e}rences}{15}{chapter*.7}

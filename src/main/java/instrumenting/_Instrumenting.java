@@ -16,6 +16,8 @@ public class _Instrumenting {
 
   public static String TMP_FILE_NAME;
 
+  public static String CURRENT_DIR;
+
   public static Map<String, Map<Integer, Boolean>> lines = new HashMap<String, Map<Integer, Boolean>>();
 
   public static void addInstrumentedClass(String qualifiedName) {

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2015.12.11)  14 DEC 2015 18:11
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2015.12.11)  14 DEC 2015 20:06
 entering extended mode
 **report.tex
 (report.tex
@@ -1324,9 +1324,8 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 [5
 
 ]
-Overfull \hbox (8.24896pt too wide) in paragraph at lines 61--62
-\OT1/cmr/m/n/12 Le con-troller cap-ture les ac-tions util-isa-teurs sur la vue 
-afin de changer le scope desire. L'utilisateur
+Underfull \hbox (badness 10000) in paragraph at lines 57--59
+
  []
 
 [6pdfTeX warning (ext4): destination with the same identifier (name{figure.1.1}
@@ -1334,63 +1333,76 @@ afin de changer le scope desire. L'utilisateur
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.63 \subsection
-                {Injection}]
+l.59 \par N
+           ous avons mis au point deux vues :]
+Overfull \hbox (8.24896pt too wide) in paragraph at lines 65--66
+\OT1/cmr/m/n/12 Le con-troller cap-ture les ac-tions util-isa-teurs sur la vue 
+afin de changer le scope desire. L'utilisateur
+ []
+
 <images/workflowOPL2.pdf, id=191, 662.475pt x 248.93pt>
 File: images/workflowOPL2.pdf Graphic file (type pdf)
 
 <use images/workflowOPL2.pdf>
-Package pdftex.def Info: images/workflowOPL2.pdf used on input line 69.
+Package pdftex.def Info: images/workflowOPL2.pdf used on input line 73.
 (pdftex.def)             Requested size: 331.2367pt x 124.46469pt.
 ) (mainmatter/realisation/technologie.tex)
-(mainmatter/realisation/screenshots.tex
-<images/Root_view.png, id=192, 1443.89438pt x 782.17218pt>
+(mainmatter/realisation/screenshots.tex [7pdfTeX warning (ext4): destination wi
+th the same identifier (name{figure.1.2}) has been already used, duplicate igno
+red
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.1 \section
+            {Screenshots} <./images/workflowOPL2.pdf>]
+<images/Root_view.png, id=205, 1443.89438pt x 782.17218pt>
 File: images/Root_view.png Graphic file (type png)
 
 <use images/Root_view.png>
 Package pdftex.def Info: images/Root_view.png used on input line 4.
 (pdftex.def)             Requested size: 483.69687pt x 262.02036pt.
 
-<images/package_view.png, id=193, 1445.4pt x 779.16093pt>
+<images/package_view.png, id=206, 1445.4pt x 779.16093pt>
 File: images/package_view.png Graphic file (type png)
 
 <use images/package_view.png>
 Package pdftex.def Info: images/package_view.png used on input line 9.
 (pdftex.def)             Requested size: 483.69687pt x 260.73816pt.
 
-<images/couverture_classe.png, id=194, 1445.4pt x 780.66656pt>
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<images/couverture_classe.png, id=207, 1445.4pt x 780.66656pt>
 File: images/couverture_classe.png Graphic file (type png)
 
 <use images/couverture_classe.png>
 Package pdftex.def Info: images/couverture_classe.png used on input line 14.
 (pdftex.def)             Requested size: 483.69687pt x 261.242pt.
-)) (mainmatter/evaluation.tex [7pdfTeX warning (ext4): destination with the sam
-e identifier (name{figure.1.2}) has been already used, duplicate ignored
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+)) (mainmatter/evaluation.tex [8pdfTeX warning (ext4): destination with the sam
+e identifier (name{figure.1.3}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.1 \chapter
-            {Évaluation} <./images/workflowOPL2.pdf>] [8pdfTeX warning (ext4):
- destination with the same identifier (name{figure.1.3}) has been already used,
- duplicate ignored
+            {Évaluation} <./images/Root_view.png>] [9pdfTeX warning (ext4): de
+stination with the same identifier (name{figure.1.4}) has been already used, du
+plicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.1 \chapter
             {Évaluation}pdfTeX warning (ext4): destination with the same ident
-ifier (name{figure.1.4}) has been already used, duplicate ignored
+ifier (name{figure.1.5}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.1 \chapter
-            {Évaluation} <./images/Root_view.png> <./images/package_view.png>]
-[9pdfTeX warning (ext4): destination with the same identifier (name{figure.1.5}
-) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.1 \chapter
-            {Évaluation} <./images/couverture_classe.png>]
+            {Évaluation} <./images/package_view.png> <./images/couverture_clas
+se.png>]
 Chapitre 2.
 (mainmatter/evaluation/pertinence.tex) (mainmatter/evaluation/temps.tex
 Overfull \hbox (1.34726pt too wide) in paragraph at lines 8--28
@@ -1541,10 +1553,10 @@ Package rerunfilecheck Info: File `report.out' has not changed.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 28.
  ) 
 Here is how much of TeX's memory you used:
- 27296 strings out of 493673
- 520526 string characters out of 3141535
- 579714 words of memory out of 3000000
- 30144 multiletter control sequences out of 15000+200000
+ 27297 strings out of 493673
+ 520541 string characters out of 3141535
+ 579889 words of memory out of 3000000
+ 30145 multiletter control sequences out of 15000+200000
  11325 words of font info for 39 fonts, out of 3000000 for 9000
  1025 hyphenation exceptions out of 8191
  69i,14n,78p,10451b,1161s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1564,7 +1576,7 @@ les (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Program Files
  (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Program Files (x8
 6)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files (x86)/M
 iKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on report.pdf (15 pages, 370527 bytes).
+Output written on report.pdf (15 pages, 372006 bytes).
 PDF statistics:
  299 PDF objects out of 1000 (max. 8388607)
  60 named destinations out of 1000 (max. 500000)

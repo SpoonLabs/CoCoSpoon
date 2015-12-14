@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2015.12.11)  12 DEC 2015 10:52
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2015.12.11)  14 DEC 2015 19:56
 entering extended mode
 **realisation.tex
 (realisation.tex
@@ -6,7 +6,7 @@ LaTeX2e <2015/01/01> patch level 2
 Babel <3.9m> and hyphenation patterns for 69 languages loaded.
 ! Undefined control sequence.
 l.1 \chapter
-            {Travailtechnique}
+            {Travail technique}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -21,7 +21,7 @@ Type  H <return>  for immediate help.
  ...                                              
                                                   
 l.1 \chapter{T
-              ravailtechnique}
+              ravail technique}
 You're in trouble here.  Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
@@ -53,7 +53,7 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 
-! LaTeX Error: File `mainmatter/realisation/approche.tex' not found.
+! LaTeX Error: File `mainmatter/realisation/principe.tex' not found.
 
 Type X to quit or <RETURN> to proceed,
 or enter new name. (Default extension: tex)
@@ -62,7 +62,7 @@ Enter file name:
 ! Emergency stop.
 <read *> 
          
-l.3 		\input{mainmatter/realisation/approche}
+l.3 		\input{mainmatter/realisation/principe}
                                              
 *** (cannot \read from terminal in nonstop modes)
 

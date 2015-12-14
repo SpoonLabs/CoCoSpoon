@@ -10,6 +10,7 @@ import java.util.function.Predicate;
 
 import org.apache.commons.lang3.StringEscapeUtils;
 
+import fil.iagl.opl.rendu.two.App;
 import fil.iagl.opl.rendu.two.insert.Insertion;
 import fil.iagl.opl.rendu.two.insert.impl.BasicInsert;
 import fil.iagl.opl.rendu.two.insert.impl.BeforeInsert;
@@ -89,6 +90,8 @@ public class AddWatcherProcessor extends AbstractProcessor<CtClass<?>> {
 
       instrumentClass.getField("TMP_FILE_NAME")
         .setDefaultExpression(getFactory().Code().createCodeSnippetExpression("\"" + StringEscapeUtils.escapeJava(tmpFile.getAbsolutePath()) + "\""));
+      instrumentClass.getField("CURRENT_DIR")
+        .setDefaultExpression(getFactory().Code().createCodeSnippetExpression("\"" + StringEscapeUtils.escapeJava(App.INPUT_SOURCE_FOLDER) + "\""));
     } catch (IOException e) {
       throw new RuntimeException(e);
     }

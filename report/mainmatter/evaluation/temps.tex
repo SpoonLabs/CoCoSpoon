@@ -1,13 +1,13 @@
 \section{Temps}
 \label{temps}
 
-L'évaluation sur le temps d'exécution a été réalisé sur dix exécutions successives du programme. La mesure du temps d'exécution est celle retournée par le framework JUnit lors de l'exécution des tests. La table \ref{evaluation_temps} représente les résultats obtenus. L'overhead s'explique par le fait que dans le pire des cas, le nombre de lignes exécutées est doublé. Le calcul de la vue est également effectué à chaque modification du modèle.
+L'évaluation sur le temps d'exécution a été réalisée sur dix exécutions successives du programme. La mesure du temps d'exécution est celle retournée par le framework JUnit\footnote{\url{http://junit.org/}} lors de l'exécution des tests. La table \ref{evaluation_temps} représente les résultats obtenus. L'overhead s'explique par le fait que dans le pire des cas, le nombre de lignes exécutées est doublé. Le calcul de la vue est également effectué à chaque modification du modèle.
 
 \begin{table}[H]
 \centering
 \begin{tabular}{|l|c|c|c|}
 \hline
-         & Commons Lang & Commons Lang' + Vue Text & Commons Lang + JavaFX\\
+         & Commons Lang & Commons Lang' + Vue Text & Commons Lang' + JavaFX\\
          \hline
 Run 1     & 20.038  & 26.756       & 38.772        \\
 Run 2     & 19.605  & 27.020       & 38.450        \\

@@ -11,8 +11,8 @@ Instrumenter les lignes de code exécutées n'est pas quelque chose de difficile
 
 \begin{lstlisting}[linewidth=5.0cm]
 maMethod :		
-	instruction
-	instruction
+   instruction a
+   instruction b
 \end{lstlisting}
 
 \end{minipage}
@@ -21,10 +21,10 @@ maMethod :
 
 \begin{lstlisting}[linewidth=11cm]
 maMethod :
-	instruction
-	stocker l'execution de la ligne 1
-	instruction
-	stocker l'execution de la ligne 2
+   instruction a
+   stocker l'execution de l'instruction a
+   instruction b
+   stocker l'execution de l'instruction b
 \end{lstlisting}
 
 \end{minipage}
@@ -46,31 +46,31 @@ Cette interprétation peut être effectuée sur les classes, packages ou encore 
 
 \subsection{Design}
 
-Notre implémentation est conçue sur le design MVC\footnote{Model View Controller}. Les sections suivantes ont pour but de détailler chaque parti du design.
+Notre implémentation est conçue sur le design MVC\footnote{Modèle Vue Controlleur}. Les sections suivantes ont pour but de détailler chaque partie de celui-ci.
 
-\subsubsection{Model}
+\subsubsection{Modèle}
 
 Le modèle de l'application contient les données nécessaires au calcul du taux de couverture. Comme expliqué dans les sections \ref{instrumentation} et \ref{interpretation}, nous avons besoin de l'ensemble des lignes de code instrumentées, ainsi que de l'ensemble des lignes de code exécutées. Le premier ensemble est construit lors de l'instrumentation, le second sera construit dynamiquement lors de l'exécution du programme instrumenté.
+\newpage
+\subsubsection{Vue}
 
-\subsubsection{View}
-
-La vue notifie l'utilisateur de la couverture actuelle du programme en cours d'exécution. Cette vue est dynamique, et évolue avec le temps en fonction des modifications sur le modèle grâce au patron de conception. \textit{Observateur/Observable}
+La vue notifie l'utilisateur de la couverture actuelle du programme en cours d'exécution. Cette vue est dynamique, et évolue avec le temps en fonction des modifications sur le modèle.
 \\
 \par Nous avons mis au point deux vues :
-La première est une vue textuellement qui ne permet pas la navigation entre les différents packages, mais qui pour un surcout moindre nous donne le détail de l'un d'entre eux fixé au début de l'exécution.
-La seconde est une vue graphique qui débute à la racine du projet. Il est ensuite possible de naviguer de package en package en cliquant sur ceux-ci.
+La première est une vue textuellement qui ne permet pas la visualisation de la couverture d'une classe en particulier.
+La seconde est une vue graphique qui débute à la racine du projet. Il est ensuite possible de naviguer dans le projet pour visualiser la couverture des packages ou des classes. De plus, cette vue permet pour une classe choisi d'ouvrir le fichier original en distinguant les lignes exécutées, non exécutées et non instrumentées. 
 
-\subsubsection{Controller}
+\subsubsection{Controlleur}
 
 Le contrôleur capture les actions de utilisateur sur la vue afin de changer le scope désiré. L'utilisateur peut donc naviguer entre les différents packages ou classes du projet.
 
 \subsection{Injection}
 
-Lors de la phase d'instrumentation du programme, les lignes permettant de calculer $L_{exec}$ ne sont pas les seules à être insérées. Notre MVC est également injecté dans le projet pour que ce dernier puisse s'auto-instrumenter et notifier sa couverture à l'utilisateur. Notre programme est uniquement utilisé pour instrumenter un programme. Il suffira ensuite de démarrer le programme exécuté pour avoir le comportement voulu. La figure \ref{workflow} représente le workflow de notre approche. 
+Lors de la phase d'instrumentation du programme, les lignes permettant de calculer $L_{exec}$ ne sont pas les seules à être insérées. Notre MVC est également injecté dans le projet pour que ce dernier puisse s'auto-instrumenter et notifier sa couverture à l'utilisateur. CoCoSpoon est uniquement utilisé pour instrumenter un programme. Il suffira ensuite de démarrer le programme exécuté pour avoir le comportement voulu. La figure \ref{workflow} représente le workflow de notre approche. 
 
 \begin{figure}[h]
 \centering
-\includegraphics[scale=0.5]{workflowOPL2.pdf}
+\includegraphics[scale=0.5]{workflowOPL2.png}
 
 \caption{Workflow}
 \label{workflow}

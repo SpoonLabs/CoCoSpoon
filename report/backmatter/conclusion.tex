@@ -2,22 +2,9 @@
 	\thispagestyle{conclusion}
 	\addcontentsline{toc}{chapter}{Conclusion}
 	
-\par Notre objectif était de prouver qu'il est possible de calculer en temps réel le pourcentage de code exécuté pour un programme. Bien que cela soit tout à fait réalisable, nous avons mis en évidence qu'il y a un overhead à concéder, qui est d'autant plus important lors de l'utilisation de la vue graphique qui permet de déplacement dans l'architecture du rojet.
-\par CoCoSpoon permet actuellement de mesurer la couverture de ligne, il pourrait être intéressant d'étendre l'outil pour mesurer la couverture de branches ou encore de méthodes.
+\par CoCoSpoon constitue une solution élégante afin de répondre à la question initiale : peut-on connaître en temps réel la couverture de code exécuté en production ? Cependant, nous soulignons que la mise en place de notre outils introduit un overhead non-négligeable sur le temps d'exécution. Il pourrait être utilisé sur des applications en phase bêta pour détecter le code mort. En effet la monté en charge de ce type d'application est plus faible et les attentes des utilisateurs sont généralement moins exigeantes.
+\par Notre instrumentation permet actuellement de mesurer la couverture de ligne. Il pourrait être intéressant d'étendre l'outil pour mesurer d'autre type de couverture, tel que couverture de branches ou de méthodes. \par Une nouvelle métrique pourrait être également ajoutée : le nombre de fois qu'une ligne est exécutée. Celle-ci permettrait de cibler les parties intéressantes à optimiser dues à leurs nombreuses utilisations. \par On pourrait également imaginer un plugin Maven permettant d'automatiser le workflow de CoCoSpoon.
 
-~\\
-~\\
-~\\
-~\\
-~\\
-~\\
-~\\
-~\\
-~\\
-~\\
-~\\
-~\\
-~\\
 ~\\
 ~\\
 ~\\

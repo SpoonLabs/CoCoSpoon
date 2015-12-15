@@ -2,13 +2,13 @@
 	\thispagestyle{introduction}
 	\addcontentsline{toc}{chapter}{Introduction}
 
-La couverture de code est une métrique représentant le pourcentage de code exécuté. Cette métrique est utiliser lors l'exécution de suites de tests afin de mesurer le code couvert par ces suites. 
+La couverture de code est une métrique représentant le pourcentage de code exécuté. Cette métrique est utilisée lors de l'exécution de suites de tests afin de mesurer le code couvert par ces suites. 
 
-Certaines méthodes de développement comme le TDD\footnote{Test-Driven Development} vont garantir une bonne couverture de par le fait que les tests sont écrit avant le code. Une question peut alors se poser, la totalité du code couvert est il bien exécuté en production ? Il est probable qu’une ligne de code exécuté lors d’une suite de tests, ne soit jamais exécutée dans un environnement de production. 
+Certaines méthodes de développement comme le TDD\footnote{Test-Driven Development} vont garantir une bonne couverture de par le fait que les tests sont écris avant le code. Une question peut alors se poser : la totalité du code couvert est-il bien exécuté en production ? Il est probable qu’une ligne de code exécutée lors d’une suite de tests, ne soit jamais exécutée dans un environnement de production. 
 
-Le but est de montrer que calculer la couverture de code sur un programme exécuté dans un environnement de production est possible, de plus, ce calcul pourrait être réalisé en temps réel pour ne pas avoir à stopper l’exécution du code en production afin d’obtenir cette fameuse métrique.
+Le but est de montrer que calculer la couverture de code sur un programme exécuté dans un environnement de production est possible. De plus, ce calcul pourrait être réalisé en temps réel pour ne pas avoir à stopper l’exécution du code en production afin d’obtenir cette fameuse métrique.
 
-Pour atteindre notre objectif, nous avons utiliser une librairie permettant de faire de la transformation de code source. L’idée est que le programme transformé puisse d’auto-instrumenter afin de notifier l’utilisateur de sa couverture à n'importe quel moment de son exécution.
+Pour atteindre notre objectif, nous avons utilisé une librairie permettant de faire de la transformation de code source. L’idée est que le programme transformé puisse s’auto-instrumenter afin de notifier l’utilisateur de sa couverture à n'importe quel moment de son exécution.
 
-Nous avons évalué notre approche sur plusieurs critères. Tous d’abord la couverture de code calculée par notre outils comparé à d’autres déjà existant, ensuite le coût supplémentaire nécessaire en mémoire afin de pouvoir réaliser ce calcul en temps réel. Et pour finir l’impact sur le temps d’exécution du programme instrumenté par rapport à l’original.
+Nous avons évalué notre approche sur plusieurs critères. Tous d’abord la couverture de code calculée par notre outil comparé à d’autres déjà existant. Ensuite le coût supplémentaire nécessaire en mémoire afin de pouvoir réaliser ce calcul en temps réel. Et pour finir l’impact sur le temps d’exécution du programme instrumenté par rapport à l’original.
 

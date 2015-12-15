@@ -41,12 +41,12 @@ La couverture de ligne se calcule à l'aide de mathématiques basiques. Appelons
 \begin{equation}
 C = { L_{exec} \over L_{total} }
 \end{equation}
-Cette interprétation peut être effectuée sur les classes, packages ou encore l'intégralité du projet instrumenté. Notre implémentation permet de visualiser la couverture de ligne pour les différents scopes cités.
+Cette interprétation peut être effectuée sur les classes, packages ou encore l'intégralité du projet. Notre implémentation permet de visualiser la couverture de ligne pour les différents scopes cités.
 \par C'est lors de l'instrumentation que nous allons calculer $L_{total}$. Ensuite, lors de l'exécution nous pourrons calculer dynamiquement $L_{exec}$ et donc $C$ en fonction du scope désiré.
 
 \subsection{Design}
 
-Notre implémentation est conçue sur le design MVC\footnote{Modèle Vue Controlleur}. Les sections suivantes ont pour but de détailler chaque partie de celui-ci.
+Notre implémentation est conçue sur le patron de conception MVC\footnote{Modèle Vue Controlleur}. Les sections suivantes ont pour but de détailler chaque partie de celui-ci.
 
 \subsubsection{Modèle}
 
@@ -60,7 +60,7 @@ La vue notifie l'utilisateur de la couverture actuelle du programme en cours d'e
 La première est une vue textuellement qui ne permet pas la visualisation de la couverture d'une classe en particulier.
 La seconde est une vue graphique qui débute à la racine du projet. Il est ensuite possible de naviguer dans le projet pour visualiser la couverture des packages ou des classes. De plus, cette vue permet pour une classe choisi d'ouvrir le fichier original en distinguant les lignes exécutées, non exécutées et non instrumentées. 
 
-\subsubsection{Controlleur}
+\subsubsection{Contrôleur}
 
 Le contrôleur capture les actions de utilisateur sur la vue afin de changer le scope désiré. L'utilisateur peut donc naviguer entre les différents packages ou classes du projet.
 

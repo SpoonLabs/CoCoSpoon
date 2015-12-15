@@ -4,9 +4,9 @@
 
 La couverture de code est une métrique représentant le pourcentage de code exécuté. Cette métrique est utilisée lors de l'exécution de suites de tests afin de mesurer le code couvert par ces suites. 
 
-Certaines méthodes de développement comme le TDD\footnote{Test-Driven Development} vont garantir une bonne couverture de par le fait que les tests sont écris avant le code. Une question peut alors se poser : le code couvert est-il bien exécuté en production ? Il est probable qu’une ligne de code exécutée lors d’une suite de tests, ne soit jamais exécutée dans un environnement de production. 
+Certaines méthodes de développement comme le TDD\footnote{Test-Driven Development} qui nécessite l'écriture des tests avant le code vont garantir une bonne couverture. Une question peut alors se poser : le code couvert est-il bien exécuté en production ? Il est probable qu’une ligne de code exécutée lors d’une suite de tests, ne soit jamais exécutée dans un environnement de production. 
 
-Le but est de montrer que calculer la couverture de code sur un programme exécuté dans un environnement de production est possible. De plus, ce calcul pourrait être réalisé en temps réel pour ne pas avoir à stopper l’exécution du code en production.
+Le but de ce rapport est de montrer qu'il est possible de calculer la couverture de code sur un programme exécuté dans un environnement de production. De plus, ce calcul pourrait être réalisé en temps réel pour ne pas avoir à stopper l’exécution du code en production.
 
 Pour atteindre cet objectif, nous proposons CoCoSpoon\footnote{\url{https://github.com/maxcleme/CoCoSpoon}}, un outils utilisant une librairie de transformation de code source. L’idée est que le programme transformé puisse s’auto-instrumenter pour notifier l’utilisateur de sa couverture à n'importe quel moment de son exécution.
 

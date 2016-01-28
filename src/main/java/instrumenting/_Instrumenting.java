@@ -49,6 +49,7 @@ public class _Instrumenting {
 
       // KEEP GRAPH OPEN
       Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
+        @Override
         public void run() {
           while (true) {
           }
@@ -61,7 +62,7 @@ public class _Instrumenting {
 
         @Override
         public void run() {
-          _BarChart.run();
+          _OverallBarChart.run();
         }
       }).start();
 

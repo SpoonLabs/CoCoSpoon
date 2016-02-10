@@ -63,7 +63,7 @@ public class _OverallBarChart extends Application {
         1.0d // 1.0 for bright, 0.0 for black
       );
       entry.getValue().keySet().forEach(key -> {
-        Data<String, Number> data = new Data<>(key, 0, String.format("#%02x%02x%02x",
+        Data<String, Number> data = new Data<>(key, computeCoverageForClass(key), String.format("#%02x%02x%02x",
           (int) (c.getRed() * 255),
           (int) (c.getGreen() * 255),
           (int) (c.getBlue() * 255)));

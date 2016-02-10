@@ -10,7 +10,6 @@ import java.util.function.Predicate;
 
 import org.apache.commons.lang3.StringEscapeUtils;
 
-import fil.iagl.opl.rendu.two.App;
 import fil.iagl.opl.rendu.two.insert.Insertion;
 import fil.iagl.opl.rendu.two.insert.impl.BasicInsert;
 import fil.iagl.opl.rendu.two.insert.impl.BeforeInsert;
@@ -27,6 +26,7 @@ import fil.iagl.opl.rendu.two.insert.impl.SynchronizedInsert;
 import fil.iagl.opl.rendu.two.insert.impl.TryInsert;
 import fil.iagl.opl.rendu.two.insert.impl.WhileInsert;
 import fil.iagl.opl.rendu.two.tools.ContainsSameElementFilter;
+import fil.iagl.opl.rendu.two.tools.Params;
 import instrumenting._Instrumenting;
 import spoon.processing.AbstractProcessor;
 import spoon.reflect.code.CtBlock;
@@ -47,7 +47,7 @@ import spoon.reflect.visitor.filter.TypeFilter;
 
 public class AddWatcherProcessor extends AbstractProcessor<CtClass<?>> {
 
-  public static final Predicate<CtElement> needToBeInstrumented = (candidate) -> !(candidate instanceof CtUnaryOperator)
+  private static final Predicate<CtElement> needToBeInstrumented = (candidate) -> !(candidate instanceof CtUnaryOperator)
     && !(candidate instanceof CtClass)
     && !(candidate instanceof CtBlock) && !candidate.isImplicit()
     && !(candidate instanceof CtLiteral)
@@ -56,6 +56,12 @@ public class AddWatcherProcessor extends AbstractProcessor<CtClass<?>> {
     && !(candidate instanceof CtField)
     && !(candidate.getParent() instanceof CtLambda)
     && !isInsideIfForSwitchDoWhile(candidate);
+
+  private Params params;
+
+  public AddWatcherProcessor(Params params) {
+    this.params = params;
+  }
 
   public static final List<Insertion> filters = Arrays.asList(
     new ConstructorInsert(),
@@ -91,18 +97,13 @@ public class AddWatcherProcessor extends AbstractProcessor<CtClass<?>> {
       instrumentClass.getField("TMP_FILE_NAME")
         .setDefaultExpression(getFactory().Code().createCodeSnippetExpression("\"" + StringEscapeUtils.escapeJava(tmpFile.getAbsolutePath()) + "\""));
       instrumentClass.getField("CURRENT_DIR")
-        .setDefaultExpression(getFactory().Code().createCodeSnippetExpression("\"" + StringEscapeUtils.escapeJava(App.INPUT_SOURCE_FOLDER) + "\""));
+        .setDefaultExpression(getFactory().Code().createCodeSnippetExpression("\"" + StringEscapeUtils.escapeJava(params.getInputSource()) + "\""));
+      instrumentClass.getField("VIEW")
+        .setDefaultExpression(getFactory().Code().createCodeSnippetExpression("instrumenting._View.View." + params.getView()));
+
     } catch (IOException e) {
       throw new RuntimeException(e);
     }
-
-    // Diplay MAP
-    // for (Entry<String, Map<Integer, Boolean>> entry : _Instrumenting.lines.entrySet()) {
-    // System.out.println(entry.getKey() + " -> ");
-    // for (Integer line : entry.getValue().keySet()) {
-    // System.out.println("\t" + line);
-    // }
-    // }
   }
 
   @Override

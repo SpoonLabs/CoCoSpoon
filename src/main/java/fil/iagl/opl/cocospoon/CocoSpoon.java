@@ -37,7 +37,7 @@ public class CocoSpoon {
     if (new File(INSTRUMENT_SOURCE_FOLDER).exists()) {
       l.addInputResource(INSTRUMENT_SOURCE_FOLDER);
     } else {
-      l.getModelBuilder().addInputSource(new ZipFolder(new File("./CocoSpoon-1.0.0-SNAPSHOT-jar-with-dependencies.jar")));
+      l.getModelBuilder().addInputSource(new ZipFolder(new File(getNameRunningJar())));
     }
 
     l.setSourceOutputDirectory(params.getOutputSource() + "/src/main/java");
@@ -52,6 +52,14 @@ public class CocoSpoon {
     System.out.println("Rewriting...");
     l.prettyprint();
     System.out.println("Done!");
+  }
+
+  private static String getNameRunningJar() {
+    return new File(CocoSpoon.class.getProtectionDomain()
+      .getCodeSource()
+      .getLocation()
+      .getPath())
+        .getName();
   }
 
 }

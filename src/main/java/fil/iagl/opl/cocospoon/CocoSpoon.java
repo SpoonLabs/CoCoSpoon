@@ -7,6 +7,7 @@ import org.apache.commons.io.FileUtils;
 import fil.iagl.opl.cocospoon.processors.WatcherProcessor;
 import fil.iagl.opl.cocospoon.tools.Params;
 import spoon.Launcher;
+import spoon.support.compiler.ZipFolder;
 
 /**
  * Hello world!
@@ -32,15 +33,25 @@ public class CocoSpoon {
 
     Launcher l = new Launcher();
     l.addInputResource(params.getInputSource() + "/src/main/java");
-    l.addInputResource(INSTRUMENT_SOURCE_FOLDER);
+
+    if (new File(INSTRUMENT_SOURCE_FOLDER).exists()) {
+      l.addInputResource(INSTRUMENT_SOURCE_FOLDER);
+    } else {
+      l.getModelBuilder().addInputSource(new ZipFolder(new File("./CocoSpoon-1.0.0-SNAPSHOT-jar-with-dependencies.jar")));
+    }
 
     l.setSourceOutputDirectory(params.getOutputSource() + "/src/main/java");
-
     l.addProcessor(new WatcherProcessor(params));
-    System.out.println("Start instrumentation...");
+
+    System.out.println("Building model...");
     l.buildModel();
+
+    System.out.println("Start instrumentation...");
     l.process();
+
+    System.out.println("Rewriting...");
     l.prettyprint();
+    System.out.println("Done!");
   }
 
 }

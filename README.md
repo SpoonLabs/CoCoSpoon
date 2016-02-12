@@ -11,6 +11,14 @@ Le but est de montrer que calculer la couverture de code sur un programme exécu
 
 Pour atteindre notre objectif, nous avons utiliser une librairie permettant de faire de la transformation de code source. L’idée est que le programme transformé puisse d’auto-instrumenter afin de notifier l’utilisateur de sa couverture à n'importe quel moment de son exécution.
 
+# Usage
+
+    CocoSpoon
+       -i, --input-path     input project folder
+       -o, --output-path    instrumented project destination
+      [-v, --view-type]     TEXT | OVERALL | INTERACTIVE
+
+
 ![alt tag](https://github.com/maxcleme/OPL-Rendu2/blob/master/report/images/Root_view.png)
 ![alt tag](https://github.com/maxcleme/OPL-Rendu2/blob/master/report/images/package_view.png)
 ![alt tag](https://github.com/maxcleme/OPL-Rendu2/blob/master/report/images/couverture_classe.png)

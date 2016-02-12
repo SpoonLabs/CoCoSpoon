@@ -16,7 +16,8 @@ Pour atteindre notre objectif, nous avons utiliser une librairie permettant de f
     CocoSpoon
        -i, --input-path     input project folder
        -o, --output-path    instrumented project destination
-      [-v, --view-type]     TEXT | OVERALL | INTERACTIVE
+      [-c, --classpath      classpath] 
+      [-v, --view-type      TEXT | OVERALL | INTERACTIVE]
 
 
 ![alt tag](https://github.com/maxcleme/OPL-Rendu2/blob/master/report/images/Root_view.png)

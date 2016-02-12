@@ -17,6 +17,7 @@ import com.sun.javafx.charts.Legend.LegendItem;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.MapChangeListener;
 import javafx.collections.ObservableList;
@@ -78,7 +79,8 @@ public class _OverallBarChart extends Application {
     chart.setTitle("Real time code coverage");
 
     installTooltip(chart.getData().get(0).getData());
-    installListener(_Instrumenting.lines.keySet());
+    installOpenTextViewListerner(chart.getData().get(0).getData());
+    installUpdateListener(_Instrumenting.lines.keySet());
 
     Legend legend = (Legend) chart.lookup(".chart-legend");
     legend.getItems().clear();
@@ -86,7 +88,7 @@ public class _OverallBarChart extends Application {
 
   }
 
-  private void installListener(Set<String> keySet) {
+  private void installUpdateListener(Set<String> keySet) {
     for (String map : keySet) {
       ObservableMap<Integer, Boolean> observedMap = FXCollections.observableMap(_Instrumenting.lines.get(map));
       observedMap.addListener(new MapChangeListener<Integer, Boolean>() {
@@ -106,6 +108,24 @@ public class _OverallBarChart extends Application {
         }
       });
       _Instrumenting.lines.put(map, observedMap);
+    }
+  }
+
+  private void installOpenTextViewListerner(ObservableList<Data<String, Number>> serie) {
+    for (Data<String, Number> data : serie) {
+      data.getNode().setOnMouseClicked(event2 -> {
+        Platform.runLater(new Runnable() {
+          @Override
+          public void run() {
+            try {
+              new _FileView(String.format(((_Instrumenting.CURRENT_DIR) + "/src/main/java/%s.java"), data.getXValue().replaceAll("\\.", "/")), data.getXValue())
+                .start(new Stage());
+            } catch (Exception e) {
+              throw new RuntimeException(e);
+            }
+          }
+        });
+      });
     }
   }
 

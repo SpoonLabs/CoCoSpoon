@@ -21,6 +21,6 @@ Pour atteindre notre objectif, nous avons utiliser une librairie permettant de f
 
 # Screenshots
 
-![alt tag](https://github.com/maxcleme/OPL-Rendu2/blob/master/report/images/Root_view.png)
+![alt tag](https://github.com/maxcleme/OPL-Rendu2/blob/master/report/images/overall_view.png)
 ![alt tag](https://github.com/maxcleme/OPL-Rendu2/blob/master/report/images/package_view.png)
 ![alt tag](https://github.com/maxcleme/OPL-Rendu2/blob/master/report/images/couverture_classe.png)

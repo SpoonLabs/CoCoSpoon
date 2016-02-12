@@ -40,6 +40,9 @@ public class CocoSpoon {
       l.getModelBuilder().addInputSource(new ZipFolder(new File(getNameRunningJar())));
     }
 
+    if (params.getClasspath() != null && !params.getClasspath().isEmpty()) {
+      l.getModelBuilder().setSourceClasspath(params.getClasspath());
+    }
     l.setSourceOutputDirectory(params.getOutputSource() + "/src/main/java");
     l.addProcessor(new WatcherProcessor(params));
 

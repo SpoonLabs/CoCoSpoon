@@ -12,6 +12,7 @@ public class Params {
 
   private String inputSource;
   private String outputSource;
+  private String classpath;
   private View view;
 
   public void handleArgs(String[] args) {
@@ -19,11 +20,11 @@ public class Params {
 
     Option<String> inputSourceOption = parse.addStringOption('i', "input-path");
     Option<String> outputSourceOption = parse.addStringOption('o', "output-path");
+    Option<String> classPathOption = parse.addStringOption('c', "classpath");
     Option<View> viewOption = parse.addOption(new ViewOption('v', "view-type", true));
 
     try {
       parse.parse(args);
-
     } catch (CmdLineParser.OptionException e) {
       System.err.println(e.getMessage());
       printUsage();
@@ -32,6 +33,7 @@ public class Params {
 
     inputSource = parse.getOptionValue(inputSourceOption);
     outputSource = parse.getOptionValue(outputSourceOption);
+    classpath = parse.getOptionValue(classPathOption);
     view = parse.getOptionValue(viewOption);
 
     if (view == null) {
@@ -48,7 +50,16 @@ public class Params {
     System.err.println("Usage: CoCoSpoon\n"
       + " -i, --input-path\t\tpath_program\n"
       + " -o, --output-path\t\tinstrumented sources destination\n"
+      + "[-c, --classpath]\t\tclasspath\n"
       + "[-v, --view-type]\t\tview type : | OVERALL | INTERACTIVE | TEXT \n");
+  }
+
+  public String getClasspath() {
+    return classpath;
+  }
+
+  public void setClasspath(String classpath) {
+    this.classpath = classpath;
   }
 
   public String getInputSource() {

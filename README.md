@@ -19,6 +19,11 @@ Pour atteindre notre objectif, nous avons utiliser une librairie permettant de f
       [-c, --classpath      classpath] 
       [-v, --view-type      TEXT | OVERALL | INTERACTIVE]
 
+# Screencast
+
+[![alt tag](https://github.com/maxcleme/OPL-Rendu2/blob/master/report/images/youtubeVideo.png)](https://youtu.be/QUZK3erdiEM)
+
+
 # Screenshots
 
 ![alt tag](https://github.com/maxcleme/OPL-Rendu2/blob/master/report/images/overall_view.png)

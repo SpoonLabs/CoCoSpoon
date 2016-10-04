@@ -8,8 +8,6 @@ import java.util.Map;
 
 public class _Instrumenting {
 
-  public static _View.View VIEW;
-
   public static String TMP_FILE_NAME;
 
   public static String CURRENT_DIR;
@@ -42,8 +40,6 @@ public class _Instrumenting {
       ObjectInputStream ois = new ObjectInputStream(fin);
       _Instrumenting.lines = ((Map<String, Map<Integer, Boolean>>) (ois.readObject()));
       ois.close();
-
-      VIEW.start();
 
     } catch (Exception e) {
       throw new RuntimeException(e);

@@ -149,11 +149,15 @@ public class WatcherProcessor extends AbstractProcessor<CtClass<?>> {
 			isInsideForInit = !(ctFor.getForInit() == null);
 			for (CtStatement statement : ctFor.getForInit()) {
 				isInsideForInit &= !statement.getElements(new ContainsSameElementFilter(candidate)).isEmpty();
+				if (!isInsideForInit)
+					break;
 			}
 
 			isInsideForUpdate = !(ctFor.getForUpdate() == null);
 			for (CtStatement statement : ctFor.getForUpdate()) {
 				isInsideForUpdate &= !statement.getElements(new ContainsSameElementFilter(candidate)).isEmpty();
+				if (!isInsideForUpdate)
+					break;
 			}
 
 /*			isInsideForInit = !(ctFor.getForInit() == null)

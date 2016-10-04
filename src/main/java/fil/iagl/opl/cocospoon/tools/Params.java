@@ -1,19 +1,15 @@
 package fil.iagl.opl.cocospoon.tools;
 
-import java.util.Locale;
 
 import com.sanityinc.jargs.CmdLineParser;
-import com.sanityinc.jargs.CmdLineParser.IllegalOptionValueException;
 import com.sanityinc.jargs.CmdLineParser.Option;
 
-import instrumenting._View.View;
 
 public class Params {
 
   private String inputSource;
   private String outputSource;
   private String classpath;
-  private View view;
 
   public void handleArgs(String[] args) {
     CmdLineParser parse = new CmdLineParser();
@@ -21,7 +17,6 @@ public class Params {
     Option<String> inputSourceOption = parse.addStringOption('i', "input-path");
     Option<String> outputSourceOption = parse.addStringOption('o', "output-path");
     Option<String> classPathOption = parse.addStringOption('c', "classpath");
-    Option<View> viewOption = parse.addOption(new ViewOption('v', "view-type", true));
 
     try {
       parse.parse(args);
@@ -34,11 +29,6 @@ public class Params {
     inputSource = parse.getOptionValue(inputSourceOption);
     outputSource = parse.getOptionValue(outputSourceOption);
     classpath = parse.getOptionValue(classPathOption);
-    view = parse.getOptionValue(viewOption);
-
-    if (view == null) {
-      view = View.OVERALL;
-    }
 
     if (inputSource == null || outputSource == null) {
       printUsage();
@@ -68,28 +58,6 @@ public class Params {
 
   public String getOutputSource() {
     return outputSource;
-  }
-
-  public View getView() {
-    return view;
-  }
-
-  private class ViewOption extends Option<View> {
-
-    protected ViewOption(char shortForm, String longForm, boolean wantsValue) {
-      super(shortForm, longForm, wantsValue);
-    }
-
-    @Override
-    protected View getDefaultValue() {
-      return View.INTERACTIVE;
-    }
-
-    @Override
-    protected View parseValue(String arg, Locale locale) throws IllegalOptionValueException {
-      return View.valueOf(arg);
-    }
-
   }
 
 }

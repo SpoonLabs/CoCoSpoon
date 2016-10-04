@@ -2,9 +2,9 @@ package fil.iagl.opl.cocospoon;
 
 import java.io.File;
 
+import fil.iagl.opl.cocospoon.processors.WatcherProcessor;
 import org.apache.commons.io.FileUtils;
 
-import fil.iagl.opl.cocospoon.processors.WatcherProcessor;
 import fil.iagl.opl.cocospoon.tools.Params;
 import spoon.Launcher;
 import spoon.support.compiler.ZipFolder;
@@ -44,7 +44,7 @@ public class CocoSpoon {
       l.getModelBuilder().setSourceClasspath(params.getClasspath());
     }
     l.setSourceOutputDirectory(params.getOutputSource() + "/src/main/java");
-    l.addProcessor(new WatcherProcessor(params));
+    l.addProcessor(new WatcherProcessor());
 
     System.out.println("Building model...");
     l.buildModel();

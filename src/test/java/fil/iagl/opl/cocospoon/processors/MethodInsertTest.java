@@ -1,19 +1,14 @@
 package fil.iagl.opl.cocospoon.processors;
 
-import java.util.stream.Collectors;
-
-import org.fest.assertions.Assertions;
-import org.junit.Test;
-
 import fil.iagl.opl.cocospoon.insert.Insertion;
 import fil.iagl.opl.cocospoon.insert.impl.MethodInsert;
 import fil.iagl.opl.cocospoon.tools.ContainsSameElementFilter;
+import org.fest.assertions.Assertions;
+import org.junit.Test;
 import spoon.Launcher;
 import spoon.reflect.code.CtStatement;
 import spoon.reflect.declaration.CtClass;
-import spoon.reflect.declaration.CtElement;
 import spoon.reflect.visitor.filter.NameFilter;
-import spoon.reflect.visitor.filter.TypeFilter;
 
 public class MethodInsertTest {
   @Test
@@ -29,13 +24,13 @@ public class MethodInsertTest {
     Integer nbStatementToInsert = 1;
     Insertion insertionStrategy = new MethodInsert();
     CtStatement statementToInsert = l.getFactory().Code().createCodeSnippetStatement("TO BE INSERT");
-    Assertions.assertThat(
+ /*   Assertions.assertThat(
       sample.getElements(new TypeFilter<CtElement>(CtElement.class))
         .stream().filter(insertionStrategy::match).collect(Collectors.toList()))
       .hasSize(nbMethod);
 
     sample.getElements(new TypeFilter<CtElement>(CtElement.class))
-      .stream().filter(insertionStrategy::match).forEach(element -> insertionStrategy.apply(element, statementToInsert));
+      .stream().filter(insertionStrategy::match).forEach(element -> insertionStrategy.apply(element, statementToInsert));*/
 
     System.out.println(sample);
     Assertions.assertThat(

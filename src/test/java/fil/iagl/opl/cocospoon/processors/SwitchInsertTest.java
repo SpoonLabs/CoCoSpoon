@@ -8,34 +8,53 @@ import org.junit.Test;
 import spoon.Launcher;
 import spoon.reflect.code.CtStatement;
 import spoon.reflect.declaration.CtClass;
+import spoon.reflect.declaration.CtElement;
 import spoon.reflect.visitor.filter.NameFilter;
+import spoon.reflect.visitor.filter.TypeFilter;
+
+import java.util.List;
+
+import static org.junit.Assert.assertEquals;
 
 public class SwitchInsertTest {
 
-  @Test
-  public void instrumentSwitchTest() throws Exception {
-    Launcher l = new Launcher();
+	@Test
+	public void instrumentSwitchTest() throws Exception {
+		Launcher l = new Launcher();
 
-    l.addInputResource("src/test/java/fil/iagl/opl/cocospoon/samples");
-    l.buildModel();
+		l.addInputResource("src/test/java/fil/iagl/opl/cocospoon/samples");
+		l.buildModel();
 
-    CtClass<?> sample = (CtClass<?>) l.getFactory().Package().getRootPackage().getElements(new NameFilter<>("SwitchSample")).get(0);
+		CtClass<?> sample = (CtClass<?>) l.getFactory().Package().getRootPackage().getElements(new NameFilter<>("SwitchSample")).get(0);
 
-    Integer nbSwitch = 2;
-    Integer nbStatementToInsert = 2;
-    Insertion insertionStrategy = new SwitchInsert();
-    CtStatement statementToInsert = l.getFactory().Code().createCodeSnippetStatement("TO BE INSERT");
+		int nbSwitch = 2;
+		int nbStatementToInsert = 2;
+		final Insertion insertionStrategy = new SwitchInsert();
+		CtStatement statementToInsert = l.getFactory().Code().createCodeSnippetStatement("TO BE INSERT");
    /* Assertions.assertThat(
-      sample.getElements(new TypeFilter<CtElement>(CtElement.class))
+	  sample.getElements(new TypeFilter<CtElement>(CtElement.class))
         .stream().filter(insertionStrategy::match).collect(Collectors.toList()))
       .hasSize(nbSwitch);
 
     sample.getElements(new TypeFilter<CtElement>(CtElement.class))
       .stream().filter(insertionStrategy::match).forEach(element -> insertionStrategy.apply(element, statementToInsert));*/
 
-    System.out.println(sample);
-    Assertions.assertThat(
-      sample.getElements(new ContainsSameElementFilter(statementToInsert)))
-      .hasSize(nbStatementToInsert);
-  }
+		List<CtElement> elements = sample.getElements(new TypeFilter<CtElement>(CtElement.class) {
+			@Override
+			public boolean matches(CtElement element) {
+				return insertionStrategy.match(element);
+			}
+		});
+
+		assertEquals(nbSwitch, elements.size());
+
+		for (CtElement element : elements) {
+			insertionStrategy.apply(element, statementToInsert);
+		}
+
+		System.out.println(sample);
+		Assertions.assertThat(
+				sample.getElements(new ContainsSameElementFilter(statementToInsert)))
+				.hasSize(nbStatementToInsert);
+	}
 }

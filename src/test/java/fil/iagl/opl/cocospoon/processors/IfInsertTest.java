@@ -8,7 +8,13 @@ import org.junit.Test;
 import spoon.Launcher;
 import spoon.reflect.code.CtStatement;
 import spoon.reflect.declaration.CtClass;
+import spoon.reflect.declaration.CtElement;
 import spoon.reflect.visitor.filter.NameFilter;
+import spoon.reflect.visitor.filter.TypeFilter;
+
+import java.util.List;
+
+import static org.junit.Assert.assertEquals;
 
 public class IfInsertTest {
 
@@ -21,10 +27,11 @@ public class IfInsertTest {
 
     CtClass<?> sample = (CtClass<?>) l.getFactory().Package().getRootPackage().getElements(new NameFilter<>("IfSample")).get(0);
 
-    Integer nbIf = 12;
-    Integer nbStatementToInsert = 15;
-    Insertion insertionStrategy = new IfInsert();
+    int nbIf = 12;
+    int nbStatementToInsert = 27;
+    final Insertion insertionStrategy = new IfInsert();
     CtStatement statementToInsert = l.getFactory().Code().createCodeSnippetStatement("TO BE INSERT");
+
    /* Assertions.assertThat(
       sample.getElements(new TypeFilter<CtElement>(CtElement.class))
         .stream().filter(insertionStrategy::match).collect(Collectors.toList()))
@@ -33,11 +40,23 @@ public class IfInsertTest {
     sample.getElements(new TypeFilter<CtElement>(CtElement.class))
       .stream().filter(insertionStrategy::match).forEach(element -> insertionStrategy.apply(element, statementToInsert));*/
 
+    List<CtElement> elements = sample.getElements(new TypeFilter<CtElement>(CtElement.class) {
+      @Override
+      public boolean matches(CtElement element) {
+        return insertionStrategy.match(element);
+      }
+    });
+
+    assertEquals(nbIf, elements.size());
+
+    for (CtElement element : elements) {
+      insertionStrategy.apply(element, statementToInsert);
+    }
+
     System.out.println(sample);
     Assertions.assertThat(
       sample.getElements(new ContainsSameElementFilter(statementToInsert)))
       .hasSize(nbStatementToInsert);
-
   }
 
 }

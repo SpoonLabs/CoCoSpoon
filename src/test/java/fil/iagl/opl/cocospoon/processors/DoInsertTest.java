@@ -8,23 +8,29 @@ import org.junit.Test;
 import spoon.Launcher;
 import spoon.reflect.code.CtStatement;
 import spoon.reflect.declaration.CtClass;
+import spoon.reflect.declaration.CtElement;
 import spoon.reflect.visitor.filter.NameFilter;
+import spoon.reflect.visitor.filter.TypeFilter;
+
+import java.util.List;
+
+import static org.junit.Assert.assertEquals;
 
 public class DoInsertTest {
-  @Test
-  public void instrumentDoTest() throws Exception {
-    Launcher l = new Launcher();
+	@Test
+	public void instrumentDoTest() throws Exception {
+		Launcher l = new Launcher();
 
-    l.addInputResource("src/test/java/fil/iagl/opl/cocospoon/samples");
-    l.buildModel();
+		l.addInputResource("src/test/java/fil/iagl/opl/cocospoon/samples");
+		l.buildModel();
 
-    CtClass<?> sample = (CtClass<?>) l.getFactory().Package().getRootPackage().getElements(new NameFilter<>("DoSample")).get(0);
+		CtClass<?> sample = (CtClass<?>) l.getFactory().Package().getRootPackage().getElements(new NameFilter<>("DoSample")).get(0);
 
-    Integer nbDo = 2;
-    Integer nbStatementToInsert = 2;
-    Insertion insertionStrategy = new DoInsert();
-    CtStatement statementToInsert = l.getFactory().Code().createCodeSnippetStatement("TO BE INSERT");
-    /*Assertions.assertThat(
+		int nbDo = 2;
+		int nbStatementToInsert = 2;
+		final Insertion insertionStrategy = new DoInsert();
+		CtStatement statementToInsert = l.getFactory().Code().createCodeSnippetStatement("TO BE INSERT");
+	/*Assertions.assertThat(
       sample.getElements(new TypeFilter<CtElement>(CtElement.class))
         .stream().filter(insertionStrategy::match).collect(Collectors.toList()))
       .hasSize(nbDo);
@@ -32,10 +38,23 @@ public class DoInsertTest {
     sample.getElements(new TypeFilter<CtElement>(CtElement.class))
       .stream().filter(insertionStrategy::match).forEach(element -> insertionStrategy.apply(element, statementToInsert));*/
 
-    System.out.println(sample);
-    Assertions.assertThat(
-      sample.getElements(new ContainsSameElementFilter(statementToInsert)))
-      .hasSize(nbStatementToInsert);
-  }
+		List<CtElement> elements = sample.getElements(new TypeFilter<CtElement>(CtElement.class) {
+			@Override
+			public boolean matches(CtElement element) {
+				return insertionStrategy.match(element);
+			}
+		});
+
+		assertEquals(nbDo, elements.size());
+
+		for (CtElement element : elements) {
+			insertionStrategy.apply(element, statementToInsert);
+		}
+
+		System.out.println(sample);
+		Assertions.assertThat(
+				sample.getElements(new ContainsSameElementFilter(statementToInsert)))
+				.hasSize(nbStatementToInsert);
+	}
 
 }

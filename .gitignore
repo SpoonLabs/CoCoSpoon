@@ -27,3 +27,6 @@ local.properties
 *.launch
 /.apt_generated/
 /.factorypath
+
+.idea/
+CocoSpoon.iml

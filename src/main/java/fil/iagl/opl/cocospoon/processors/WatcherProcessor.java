@@ -10,37 +10,10 @@ import spoon.reflect.declaration.*;
 import spoon.reflect.reference.CtReference;
 import spoon.reflect.visitor.filter.TypeFilter;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
 import java.util.Arrays;
 import java.util.List;
 
 public class WatcherProcessor extends AbstractProcessor<CtClass<?>> {
-
-  /*private static final Predicate<CtElement> needToBeInstrumented = (candidate) -> !(candidate instanceof CtUnaryOperator)
-	&& !(candidate instanceof CtClass)
-    && !(candidate instanceof CtBlock) && !candidate.isImplicit()
-    && !(candidate instanceof CtLiteral)
-    && !(candidate instanceof CtCodeSnippetStatement)
-    && !(candidate instanceof CtTypeAccess)
-    && !(candidate instanceof CtField)
-    && !(candidate instanceof CtReference)
-    && !(candidate instanceof CtConstructor)
-    && !(candidate instanceof CtMethod)
-    && !(candidate.getParent() instanceof CtLambda)
-    && !isInsideIfForSwitchDoWhile(candidate);
-
-  private Params params;
-
-  public WatcherProcessor(Params params) {
-    this.params = params;
-  }*/
-
-	public WatcherProcessor() {
-
-	}
 
 	public static final List<Insertion> filters = Arrays.asList(
 			new ConstructorInsert(),
@@ -57,31 +30,11 @@ public class WatcherProcessor extends AbstractProcessor<CtClass<?>> {
 			new BeforeInsert(),
 			new BasicInsert());
 
+
 	@Override
 	public boolean isToBeProcessed(CtClass<?> candidate) {
 		return !candidate.isAnonymous() && candidate.getPackage() != null && !candidate.getPackage().getQualifiedName().startsWith("instrumenting")
 				&& candidate.getParent(CtConstructor.class) == null;
-	}
-
-	@Override
-	public void processingDone() {
-		try {
-//      CtClass<Object> instrumentClass = getFactory().Class().get(_Instrumenting.class);
-
-			File tmpFile = File.createTempFile("opl_instrumented", "");
-			FileOutputStream fout = new FileOutputStream(tmpFile);
-			ObjectOutputStream oos = new ObjectOutputStream(fout);
-			oos.writeObject(_Instrumenting.lines);
-			oos.close();
-
-//      instrumentClass.getField("TMP_FILE_NAME")
-//        .setDefaultExpression(getFactory().Code().createCodeSnippetExpression("\"" + StringEscapeUtils.escapeJava(tmpFile.getAbsolutePath()) + "\""));
-//      instrumentClass.getField("CURRENT_DIR")
-//        .setDefaultExpression(getFactory().Code().createCodeSnippetExpression("\"" + StringEscapeUtils.escapeJava(params.getInputSource()) + "\""));
-
-		} catch (IOException e) {
-			throw new RuntimeException(e);
-		}
 	}
 
 	@Override
@@ -102,7 +55,6 @@ public class WatcherProcessor extends AbstractProcessor<CtClass<?>> {
 				findMatcherAndApply(candidate);
 			}
 		}
-//    ctClass.getElements(new TypeFilter<>(CtElement.class)).stream().filter(needToBeInstrumented).forEach(statement -> findMatcherAndApply(statement));
 	}
 
 	private void findMatcherAndApply(CtElement element) {
@@ -112,7 +64,6 @@ public class WatcherProcessor extends AbstractProcessor<CtClass<?>> {
 				break;
 			}
 		}
-//		instrumentLine(filters.stream().filter(filter -> filter.match(element)).findFirst().orElse(new DoNotInsert()), element);
 	}
 
 	private void instrumentLine(Insertion filter, CtElement element) {
@@ -159,11 +110,6 @@ public class WatcherProcessor extends AbstractProcessor<CtClass<?>> {
 				if (!isInsideForUpdate)
 					break;
 			}
-
-/*			isInsideForInit = !(ctFor.getForInit() == null)
-					&& ctFor.getForInit().stream().anyMatch(statement -> !statement.getElements(new ContainsSameElementFilter(candidate)).isEmpty());
-			isInsideForUpdate = !(ctFor.getForUpdate() == null)
-					&& ctFor.getForUpdate().stream().anyMatch(statement -> !statement.getElements(new ContainsSameElementFilter(candidate)).isEmpty());*/
 		}
 
 		if (candidate.getParent(CtSwitch.class) != null) {

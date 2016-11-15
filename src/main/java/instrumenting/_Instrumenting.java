@@ -16,7 +16,6 @@ public class _Instrumenting {
 
   public static void addInstrumentedClass(String qualifiedName) {
     if (lines.get(qualifiedName) == null) {
-      System.out.printf("Intrumenting %s ...\n", qualifiedName);
       lines.put(qualifiedName, new HashMap<Integer, Boolean>());
     }
   }

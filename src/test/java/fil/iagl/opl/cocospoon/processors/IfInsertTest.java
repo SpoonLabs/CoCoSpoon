@@ -28,7 +28,6 @@ public class IfInsertTest {
     CtClass<?> sample = (CtClass<?>) l.getFactory().Package().getRootPackage().getElements(new NameFilter<>("IfSample")).get(0);
 
     int nbIf = 12;
-    int nbStatementToInsert = 27;
     final Insertion insertionStrategy = new IfInsert();
     CtStatement statementToInsert = l.getFactory().Code().createCodeSnippetStatement("TO BE INSERT");
 
@@ -52,11 +51,10 @@ public class IfInsertTest {
     for (CtElement element : elements) {
       insertionStrategy.apply(element, statementToInsert);
     }
-
-    System.out.println(sample);
+    List<CtElement> elements1 = sample.getElements(new ContainsSameElementFilter(statementToInsert));
     Assertions.assertThat(
-      sample.getElements(new ContainsSameElementFilter(statementToInsert)))
-      .hasSize(nbStatementToInsert);
+            elements1)
+      .hasSize(32); // we have 5 more thanks to new all-in-block feature
   }
 
 }

@@ -17,7 +17,10 @@ Pour atteindre notre objectif, nous avons utiliser une librairie permettant de f
        -i, --input-path     input project folder
        -o, --output-path    instrumented project destination
       [-c, --classpath      classpath] 
-      [-v, --view-type      TEXT | OVERALL | INTERACTIVE]
+
+# GUI
+
+The GUI is now availaible [here](https://github.com/SpoonLabs/CoCoSpoon-ui.git)
 
 # Screencast
 

@@ -11,58 +11,62 @@ import spoon.support.compiler.ZipFolder;
 
 /**
  * Hello world!
- *
  */
 public class CocoSpoon {
-  private static final String INSTRUMENT_SOURCE_FOLDER = "src/main/java/instrumenting";
+    private static final String INSTRUMENT_SOURCE_FOLDER = "src/main/java/instrumenting";
 
-  public static void main(String[] args) throws Exception {
-    Params params = new Params();
-    params.handleArgs(args);
-
-    File inputFile = new File(params.getInputSource());
-    File outputFile = new File(params.getOutputSource());
-
-    if (outputFile.exists()) {
-      System.out.println("Deleting older instrumentation...");
-      FileUtils.forceDelete(outputFile);
+    public static void main(String[] args) throws Exception {
+        Launcher l = run(args);
+        System.out.println("Rewriting...");
+        l.prettyprint();
+        System.out.println("Done!");
     }
 
-    System.out.println("Creating output folder...");
-    FileUtils.copyDirectory(inputFile, outputFile);
+    public static Launcher run(String[] args) throws Exception {
+        Params params = new Params();
+        params.handleArgs(args);
 
-    Launcher l = new Launcher();
-    l.addInputResource(params.getInputSource() + "/src/main/java");
+        File inputFile = new File(params.getInputSource());
+        File outputFile = new File(params.getOutputSource());
 
-    if (new File(INSTRUMENT_SOURCE_FOLDER).exists()) {
-      l.addInputResource(INSTRUMENT_SOURCE_FOLDER);
-    } else {
-      l.getModelBuilder().addInputSource(new ZipFolder(new File(getNameRunningJar())));
+        if (outputFile.exists()) {
+            System.out.println("Deleting older instrumentation...");
+            FileUtils.forceDelete(outputFile);
+        }
+
+        System.out.println("Creating output folder...");
+        FileUtils.copyDirectory(inputFile, outputFile);
+
+        Launcher l = new Launcher();
+        l.addInputResource(params.getInputSource() + "/src/main/java");
+
+        if (new File(INSTRUMENT_SOURCE_FOLDER).exists()) {
+            l.addInputResource(INSTRUMENT_SOURCE_FOLDER);
+        } else {
+            l.getModelBuilder().addInputSource(new ZipFolder(new File(getNameRunningJar())));
+        }
+
+        if (params.getClasspath() != null && !params.getClasspath().isEmpty()) {
+            l.getModelBuilder().setSourceClasspath(params.getClasspath());
+        }
+        l.setSourceOutputDirectory(params.getOutputSource() + "/src/main/java");
+        l.addProcessor(new WatcherProcessor());
+
+        System.out.println("Building model...");
+        l.buildModel();
+
+        System.out.println("Start instrumentation...");
+        l.process();
+
+        return l;
     }
 
-    if (params.getClasspath() != null && !params.getClasspath().isEmpty()) {
-      l.getModelBuilder().setSourceClasspath(params.getClasspath());
+    private static String getNameRunningJar() {
+        return new File(CocoSpoon.class.getProtectionDomain()
+                .getCodeSource()
+                .getLocation()
+                .getPath())
+                .getName();
     }
-    l.setSourceOutputDirectory(params.getOutputSource() + "/src/main/java");
-    l.addProcessor(new WatcherProcessor());
-
-    System.out.println("Building model...");
-    l.buildModel();
-
-    System.out.println("Start instrumentation...");
-    l.process();
-
-    System.out.println("Rewriting...");
-    l.prettyprint();
-    System.out.println("Done!");
-  }
-
-  private static String getNameRunningJar() {
-    return new File(CocoSpoon.class.getProtectionDomain()
-      .getCodeSource()
-      .getLocation()
-      .getPath())
-        .getName();
-  }
 
 }

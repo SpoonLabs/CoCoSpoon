@@ -9,7 +9,7 @@ import spoon.Launcher;
 import spoon.reflect.code.CtStatement;
 import spoon.reflect.declaration.CtClass;
 import spoon.reflect.declaration.CtElement;
-import spoon.reflect.visitor.filter.NameFilter;
+import spoon.reflect.visitor.filter.NamedElementFilter;
 import spoon.reflect.visitor.filter.TypeFilter;
 
 import java.util.List;
@@ -25,7 +25,7 @@ public class IfInsertTest {
     l.addInputResource("src/test/java/fil/iagl/opl/cocospoon/samples");
     l.buildModel();
 
-    CtClass<?> sample = (CtClass<?>) l.getFactory().Package().getRootPackage().getElements(new NameFilter<>("IfSample")).get(0);
+    CtClass<?> sample = l.getFactory().Package().getRootPackage().getElements(new NamedElementFilter<CtClass>(CtClass.class, "IfSample")).get(0);
 
     int nbIf = 12;
     final Insertion insertionStrategy = new IfInsert();

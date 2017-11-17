@@ -1,8 +1,8 @@
+# CoCoSpoon
+
 <p align="center">
 <img width="10%" src="https://github.com/maxcleme/OPL-Rendu2/blob/master/report/images/logoCoCoSpoon.png" />
 </p>
-# CoCoSpoon
-
 La couverture de code est une métrique représentant le pourcentage de code exécuté. Cette métrique est utiliser lors l'exécution de suites de tests afin de mesurer le code couvert par ces suites. 
 
 Certaines méthodes de développement comme le TDD vont garantir une bonne couverture de par le fait que les tests sont écrit avant le code. Une question peut alors se poser, la totalité du code couvert est il bien exécuté en production ? Il est probable qu’une ligne de code exécuté lors d’une suite de tests, ne soit jamais exécutée dans un environnement de production. 
@@ -20,7 +20,7 @@ Pour atteindre notre objectif, nous avons utiliser une librairie permettant de f
 
 # GUI
 
-The GUI is now availaible [here](https://github.com/SpoonLabs/CoCoSpoon-ui.git)
+The GUI is availaible on <https://github.com/SpoonLabs/CoCoSpoon-ui>
 
 # Screencast
 

@@ -1,1 +1,7 @@
 language: java
+env:
+  global:
+    secure: gmIoHoEwagNHMKXMab0jy4vrQ3TjgmpZCkYVdwgj60BAjeYBrobirfVihpZ3fdGaXkZ8oXPoTt8lqdgYeduD+fpLZQQ07rq0Nc5syF0fn/p9YaeFfTDeVlKTJBY3YHfwZUeKrRxLyLWIBNHejD6NAGVYMDktCjydPGtvtAtxfa5rOSWnLU05ti2ZrStlm4G+ubIYT2XB+mvELvDllPt8GxZKz/3LOn0M/MARyKQ7gpdDVN3Qy8//hVFnuPyahGDfIbMqoublnkXU1vC9kJ1AzNhVGzzqR94FaMMvuYlZEI7+9IlkxyA+4d+aXm041btxCWAPTXZ0fJeN4cvMGWR+urM7AdPt7sS6tzplAjBqxMfGy3LcvGE85pXpz+/ophwBatdwJZuOVTrLSqKnNndfCSmzA5FWtDVVhwyvXp8rjAJhHwel76YmXh5BgXEUqOhYfhDT23qWwdjT7uYgztsqZ3Zq/fUaZttKVUxQqrB0qP1Gen5l+C3Bs1susgLpQfnkIw2Z7GrAypZHTgZd6JTZteX/RhYLVwXZG+QUl7dI7lJaoOL91Zk0YVXuddWiqJPVAd2Opp2x9Qky/n9SOcrejDAReqHqTg00tjzZJZYBpuU6bVahvrndsk8wFtjFM3W+iirlRniH2cTnpFACHSEB+UZSLWnyR1cepRTyXLPrnfA=
+after_success:
+- '[[ $TRAVIS_BRANCH == "master" ]] &&
+  { mvn deploy --settings .travis-settings.xml -DskipTests=true -B; };'

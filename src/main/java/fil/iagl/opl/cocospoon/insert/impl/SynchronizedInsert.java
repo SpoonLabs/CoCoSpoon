@@ -15,7 +15,7 @@ public class SynchronizedInsert implements Insertion {
   @Override
   public void apply(CtElement element, CtStatement statementToInsert) {
     CtSynchronized ctSync = (CtSynchronized) element;
-    ctSync.getBlock().getStatements().add(0, statementToInsert);
+    ctSync.getBlock().addStatement(0, statementToInsert);
 
   }
 

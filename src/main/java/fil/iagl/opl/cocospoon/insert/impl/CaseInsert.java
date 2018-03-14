@@ -19,7 +19,7 @@ public class CaseInsert implements Insertion {
       ctCase.addStatement(statementToInsert);
     } else {
       statementToInsert.setParent(ctCase);
-      ctCase.getStatements().add(0, statementToInsert);
+      ctCase.addStatement(0, statementToInsert);
     }
   }
 

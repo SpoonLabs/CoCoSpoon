@@ -16,7 +16,7 @@ public class MethodInsert implements Insertion {
   public void apply(CtElement element, CtStatement statementToInsert) {
     CtMethod<?> ctMethod = (CtMethod<?>) element;
     statementToInsert.setParent(ctMethod.getBody());
-    ctMethod.getBody().getStatements().add(0, statementToInsert);
+    ctMethod.getBody().addStatement(0, statementToInsert);
   }
 
 }

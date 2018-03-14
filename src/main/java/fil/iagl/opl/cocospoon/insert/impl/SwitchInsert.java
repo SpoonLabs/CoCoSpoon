@@ -24,8 +24,9 @@ public class SwitchInsert implements Insertion {
         idx = i;
       }
     }
-    if (idx != -1)
-      ctBlock.getStatements().add(idx, statementToInsert);
+    if (idx != -1) {
+      ctBlock.addStatement(idx, statementToInsert);
+    }
   }
 
 }

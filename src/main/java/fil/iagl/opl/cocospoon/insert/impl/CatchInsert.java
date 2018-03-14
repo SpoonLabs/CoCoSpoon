@@ -16,7 +16,7 @@ public class CatchInsert implements Insertion {
   public void apply(CtElement element, CtStatement statementToInsert) {
     CtCatch ctCatch = (CtCatch) element;
     statementToInsert.setParent(ctCatch.getBody());
-    ctCatch.getBody().getStatements().add(0, statementToInsert);
+    ctCatch.getBody().addStatement(0, statementToInsert);
   }
 
 }

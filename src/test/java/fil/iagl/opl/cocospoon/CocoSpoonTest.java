@@ -4,6 +4,7 @@ package fil.iagl.opl.cocospoon;
 import fil.iagl.opl.cocospoon.insert.Insertion;
 import fil.iagl.opl.cocospoon.insert.impl.BeforeInsert;
 import fil.iagl.opl.cocospoon.processors.WatcherProcessor;
+import fil.iagl.opl.cocospoon.samples.MethodSample;
 import fil.iagl.opl.cocospoon.tools.ContainsSameElementFilter;
 import org.fest.assertions.Assertions;
 import org.junit.Test;
@@ -34,6 +35,10 @@ public class CocoSpoonTest {
     l2.addProcessor(new WatcherProcessor());
     l2.getEnvironment().setShouldCompile(true);
     l2.run();
+
+    // contract: the runtime works
+    // the constructor has been instrumented and calls the Cocospoon method
+    Object o = l2.getFactory().Class().get(MethodSample.class).newInstance();
   }
 
 }

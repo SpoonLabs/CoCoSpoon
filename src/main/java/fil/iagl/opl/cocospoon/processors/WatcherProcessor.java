@@ -77,7 +77,7 @@ public class WatcherProcessor extends AbstractProcessor<CtClass<?>> {
 		CtCodeSnippetStatement statementToInsert = getFactory().Code()
 				.createCodeSnippetStatement(
 						"instrumenting._Instrumenting.isPassedThrough(\"" + qualifiedName + "\", " + element.getPosition().getLine() + ")");
-		filter.apply(element, statementToInsert);
+		filter.apply(element, statementToInsert.clone());
 	}
 
 	private static boolean isInsideIfForSwitchDoWhile(CtElement candidate) {

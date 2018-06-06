@@ -3,6 +3,7 @@ package fil.iagl.opl.cocospoon.processors;
 import fil.iagl.opl.cocospoon.insert.Insertion;
 import fil.iagl.opl.cocospoon.insert.impl.IfInsert;
 import fil.iagl.opl.cocospoon.tools.ContainsSameElementFilter;
+import fil.iagl.opl.cocospoon.tools.EqualsElementFilter;
 import org.fest.assertions.Assertions;
 import org.junit.Test;
 import spoon.Launcher;
@@ -51,7 +52,7 @@ public class IfInsertTest {
     for (CtElement element : elements) {
       insertionStrategy.apply(element, statementToInsert);
     }
-    List<CtElement> elements1 = sample.getElements(new ContainsSameElementFilter(statementToInsert));
+    List<CtElement> elements1 = sample.getElements(new EqualsElementFilter(statementToInsert));
     Assertions.assertThat(
             elements1)
       .hasSize(32); // we have 5 more thanks to new all-in-block feature

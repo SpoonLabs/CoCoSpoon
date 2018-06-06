@@ -4,6 +4,7 @@ package fil.iagl.opl.cocospoon.processors;
 import fil.iagl.opl.cocospoon.insert.Insertion;
 import fil.iagl.opl.cocospoon.insert.impl.SynchronizedInsert;
 import fil.iagl.opl.cocospoon.tools.ContainsSameElementFilter;
+import fil.iagl.opl.cocospoon.tools.EqualsElementFilter;
 import org.fest.assertions.Assertions;
 import org.junit.Test;
 import spoon.Launcher;
@@ -49,12 +50,12 @@ public class SynchronizedInsertTest {
 		assertEquals(nbSynchronizedBlock, elements.size());
 
 		for (CtElement element : elements) {
-			insertionStrategy.apply(element, statementToInsert);
+			insertionStrategy.apply(element, statementToInsert.clone());
 		}
 
 		System.out.println(sample);
 		Assertions.assertThat(
-				sample.getElements(new ContainsSameElementFilter(statementToInsert)))
+				sample.getElements(new EqualsElementFilter(statementToInsert)))
 				.hasSize(nbStatementToInsert);
 	}
 

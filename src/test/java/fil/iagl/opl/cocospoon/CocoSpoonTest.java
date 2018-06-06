@@ -30,7 +30,7 @@ public class CocoSpoonTest {
 
     // contract: all processors together are fine
     Launcher l2 = new Launcher();
-    l2.getFactory().Package().getRootPackage().addPackage(l.getFactory().Package().get("instrumenting"));
+    l2.getFactory().Package().getRootPackage().addPackage(l.getFactory().Package().get("instrumenting").clone());
     l2.addInputResource("src/test/java/fil/iagl/opl/cocospoon/samples/");
     l2.addProcessor(new WatcherProcessor());
     l2.getEnvironment().setShouldCompile(true);

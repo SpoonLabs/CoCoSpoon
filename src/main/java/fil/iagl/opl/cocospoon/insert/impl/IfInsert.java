@@ -17,8 +17,8 @@ public class IfInsert implements Insertion {
 		CtIf ctIf = (CtIf) element;
 		ctIf.insertBefore(statementToInsert);
 		if (ctIf.getThenStatement() != null && !(ctIf.getThenStatement() instanceof CtIf))
-			ctIf.getThenStatement().insertBefore(statementToInsert);
+			ctIf.getThenStatement().insertBefore(statementToInsert.clone());
 		if (ctIf.getElseStatement() != null && !(ctIf.getElseStatement() instanceof CtIf))
-			ctIf.getElseStatement().insertBefore(statementToInsert);
+			ctIf.getElseStatement().insertBefore(statementToInsert.clone());
 	}
 }

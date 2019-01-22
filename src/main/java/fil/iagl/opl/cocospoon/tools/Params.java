@@ -1,8 +1,8 @@
 package fil.iagl.opl.cocospoon.tools;
 
 
-import com.sanityinc.jargs.CmdLineParser;
-import com.sanityinc.jargs.CmdLineParser.Option;
+// import com.sanityinc.jargs.CmdLineParser;
+// import com.sanityinc.jargs.CmdLineParser.Option;
 
 
 public class Params {
@@ -12,28 +12,28 @@ public class Params {
   private String classpath;
 
   public void handleArgs(String[] args) {
-    CmdLineParser parse = new CmdLineParser();
-
-    Option<String> inputSourceOption = parse.addStringOption('i', "input-path");
-    Option<String> outputSourceOption = parse.addStringOption('o', "output-path");
-    Option<String> classPathOption = parse.addStringOption('c', "classpath");
-
-    try {
-      parse.parse(args);
-    } catch (CmdLineParser.OptionException e) {
-      System.err.println(e.getMessage());
-      printUsage();
-      System.exit(2);
-    }
-
-    inputSource = parse.getOptionValue(inputSourceOption);
-    outputSource = parse.getOptionValue(outputSourceOption);
-    classpath = parse.getOptionValue(classPathOption);
-
-    if (inputSource == null || outputSource == null) {
-      printUsage();
-      System.exit(2);
-    }
+//     CmdLineParser parse = new CmdLineParser();
+// 
+//     Option<String> inputSourceOption = parse.addStringOption('i', "input-path");
+//     Option<String> outputSourceOption = parse.addStringOption('o', "output-path");
+//     Option<String> classPathOption = parse.addStringOption('c', "classpath");
+// 
+//     try {
+//       parse.parse(args);
+//     } catch (CmdLineParser.OptionException e) {
+//       System.err.println(e.getMessage());
+//       printUsage();
+//       System.exit(2);
+//     }
+// 
+//     inputSource = parse.getOptionValue(inputSourceOption);
+//     outputSource = parse.getOptionValue(outputSourceOption);
+//     classpath = parse.getOptionValue(classPathOption);
+// 
+//     if (inputSource == null || outputSource == null) {
+//       printUsage();
+//       System.exit(2);
+//     }
   }
 
   private void printUsage() {
